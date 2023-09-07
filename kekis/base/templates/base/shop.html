@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}МАГАЗИН КВАНТОРИУМА{% endblock title %}</h1>
+		
+{% block filters %}
+<div class="filters">
+	<button onclick="sortList()" class="filter" style="height: 20px;"><img src="{% static 'img/alphabet-up.png' %}" alt="">Возрастание</button>
+	<button onclick="sortListY()" class="filter"><img src="{% static 'img/alphabet-down.png' %}" alt="">Убывание</button>	
+</div>
+{% endblock filters %}
+
+{% block content %}
+<div class="infoblock" id="id01">
+	{% for shop in shop %}
+		<div class="shop__block">
+			<img src="{{shop.photo.url}}" alt="{{project.photo}}" srcset="">
+			<h2 style="font-family: 'RobotoBold';">{{shop.title}}</h2>
+			<h2 style="font-family: 'RobotoThin'; font-weight: bold;">{{shop.price}} Кредитов</h2>
+			<button style="font-family: 'RobotoBold';" onclick="location.href='{% url 'buy' shop.id %}';">Купить</button>
+		</div>
+	{% endfor %}
+</div>
+{% endblock content %}
+{% block script %}<script src="{% static 'js/shop.js' %}"></script>{% endblock script %}

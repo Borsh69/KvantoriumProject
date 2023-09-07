@@ -1,0 +1,97 @@
+
+
+
+<!DOCTYPE html>
+
+
+{% load static %}
+<head>
+   	<meta charset="utf-8">
+   	<title>KVANTORIUM REWARDS</title>
+   	<meta name="viewport" content="width=device-width, user-scalable=no; initial-scale=1.0">
+  	<!--icons of panel-->
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'logotip/apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'logotip/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'logotip/favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'logotip/site.webmanifest' %}">
+	<link href = "{% static 'fonts/stylesheet.css' %}" rel = "stylesheet" type = "text/css" >
+	<!--style-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+	<!--bootstrap-->
+	
+</head>
+<body id="body">
+	<div class="container">
+		<header>
+			<a href="/"><img src="{% static 'img/icon.png' %}" class="logo"></a>
+			<div class="header__buttons">
+				<form action="{% url 'home' %}" method="get" class="search">
+					<img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""><span><input name="q" type="text" class="field"><input  type="submit" value="Найти" class="submit"></span>
+				</form>
+				<a class="search_mobile" href=""><img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""></a>
+				<a href="/shop/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/shop_icon.png'%}" alt="" srcset=""></a>
+				<a href="/login/">
+					{% if account.photo.url %}
+						<img class="account-info__avatar" style=" width: 40px; height: 40px; box-shadow: 0 0 2px 2px white;" src="{{account.photo.url}}" alt="" srcset="">
+				  	{% else %}
+					 	<img class="shop-avatar" style="width: 40px; height: 40px; box-shadow: 0 0 2px 2px white;" src="{% static 'img/person.png' %}" alt="" srcset="">
+				  	{% endif %}</a>
+			</div>
+			</header>
+		<h1 class="heading" style="font-family: 'RobotoBold';">{% block title %}ДОСТОЯНИЕ КВАНТОРИУМА{% endblock title %}</h1>
+		{% block filters %}
+		<div class="filters">
+			<button style="font-family: 'RobotoBold'" id="pppBtn"class="filter"><img src="{% static 'img/filter.png' %}" alt="">Фильтры</button>
+			<a style="font-family: 'RobotoBold'" href="#filters_popup" class="filter mobile"><img src="{% static 'img/filter.png' %}" alt="">Фильтры</a>
+			<button style="font-family: 'RobotoBold'" onclick="sortList()" class="filter" style="height: 20px;"><img src="{% static 'img/alphabet-up.png' %}" alt="">Возрастание</button>
+			<button style="font-family: 'RobotoBold'" onclick="sortListY()" class="filter"><img src="{% static 'img/alphabet-down.png' %}" alt="">Убывание</button>	
+		</div>
+		<div id="filters_popup">
+			<div id="okno">
+				<a href="#" class="filters_close"></a>
+				<ul>
+					<li><a style="font-family: 'RobotoMedium'" href="{% url 'home' %}">All</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Vr">VR</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=It">IT</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Media">MEDIA</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Ind-Design">IND-DESIGN</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Energy">ENERGY</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Bio">BIO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Neuro">NEURO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Nano">NANO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Hi-Tech">HI-TECH</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Geo">GEO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Aero">AERO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Ind-Robo">IND-ROBO</a></li><br>
+				</ul>
+			</div>
+		</div>
+		<div id="popup" class="popup">
+			<div class="popup_content">
+				<ul>
+					<li><a style="font-family: 'RobotoMedium'" href="{% url 'home' %}">All</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Vr">VR</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=It">IT</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Media">MEDIA</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Ind-Design">IND-DESIGN</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Energy">ENERGY</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Bio">BIO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Neuro">NEURO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Nano">NANO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Hi-Tech">HI-TECH</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Geo">GEO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Aero">AERO</a></li><br>
+					<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Ind-Robo">IND-ROBO</a></li><br>
+				</ul>
+				<span class="close"></span>
+			</div>
+		</div>
+		{% endblock filters %}
+		{% block content %}
+		
+		{% endblock content %}
+		{% include 'footer.html' %}
+	</div>
+	{% block script %}<script src="{% static 'js/script.js' %}"></script>{% endblock script %}
+</body>

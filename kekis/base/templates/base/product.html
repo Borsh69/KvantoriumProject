@@ -1,0 +1,31 @@
+{% extends '../base/shop.html' %}
+
+
+
+{% block title %}{{shop.title}}{% endblock title %}
+
+
+{% block content %}
+<img src="{{image.image.url}}" alt="{{project.image.id}}">
+<div class="infoblock project" style="justify-content: left;">
+    <div class="sim-slider">
+        <ul class="sim-slider-list">
+            <li class="block"></li>
+            {% for image in images %}
+                <li class="sim-slider-element"><img src="{{image.image.url}}" alt="{{shop.image.id}}"></li>
+            {% endfor %}
+        </ul>
+        <div class="sim-slider-arrow-left"></div>
+        <div class="sim-slider-arrow-right"></div>
+        <div class="sim-slider-dots"></div>
+    </div>
+    
+</div>
+<div>
+    Описание:
+    <p>{{shop.description}}</p>
+    Цена:
+    <p>{{shop.price}}</p>
+</div>
+
+{% endblock content %}

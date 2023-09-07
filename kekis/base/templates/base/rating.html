@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block filters %}
+	<div class="filters">
+		<button onclick="sortListY()" class="filter"><img src="{% static 'img/alphabet-down.png' %}" alt="">Убывание</button>	
+		<button onclick="sortList()" class="filter" style="height: 20px;"><img src="{% static 'img/alphabet-up.png' %}" alt="">Возрастание</button>
+	</div>
+{% endblock filters %}
+{% block content %}
+	<div class="infoblock rating_row" id="id01">
+		{% for person in person %}
+			{% if person.id == 2%}
+			{% else %}
+			<div class="row__block" onclick="document.location.href='/account/{{person.id}}/'">
+				<main>
+					<h2>Кредитов: {{person.rank}}</h2>
+					<h2>Имя: {{person.name}}</h2>
+					<h2>Возраст {{person.age}}</h2>
+				</main>
+				<hr>
+			</div>
+			{%endif%}
+		{% endfor %}
+	</div>
+{% endblock content %}
+
+{% block script %}<script src="{% static 'js/rating.js' %}"></script>{% endblock script %}

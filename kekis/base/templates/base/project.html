@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+
+
+{% block title %}{{project.name}}{% endblock title %}
+
+
+{% block content %}
+<div class="infoblock project" style="justify-content: left;">
+    <div class="sim-slider">
+        <ul class="sim-slider-list">
+            <li class="block"></li>
+            {% for image in project.image.all %}
+                <li class="sim-slider-element"><img src="{{image.image.url}}" alt="{{project.image.id}}"></li>
+            {% endfor %}
+        </ul>
+        <div class="sim-slider-arrow-left"></div>
+        <div class="sim-slider-arrow-right"></div>
+        <div class="sim-slider-dots"></div>
+    </div>
+    <div>
+        Описание:
+        <p>{{project.description}}</p>
+        Контакты:
+        <div class="contact">
+            {% for contact in project.contacts.all %}
+                <p>{{contact.last_name}} {{contact.first_name}}: <a href="tel:+79992387233">{{contact.phone}}</a></p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

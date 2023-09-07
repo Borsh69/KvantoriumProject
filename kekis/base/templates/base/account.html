@@ -1,0 +1,53 @@
+
+{% extends 'main.html' %}
+{% load static %}
+
+{% block filters %}{% endblock filters %}
+{% block title %}ПРОФИЛЬ{% endblock title %}
+{% block content %}
+    <div class="account-info">
+        <div class="account-info__logo">
+            <img class="account-info__avatar" src="{{account.photo.url}}" alt="" srcset="">
+            <div>
+                <p style="font-family: 'RobotoBold';" class="account-info__social-credits"><span style="font-family: 'RobotoBold';">{{account.rank}}</span> КРЕДИТОВ</p>
+                <p class="account-info__score"><a href="/rating/"><img src="{% static 'img/cup.png' %}">{{account.score}} место</a></p>
+            </div>
+        </div>
+        <div class="account-info__info">
+            <div class="account-info__name">{{account.name}}</div>
+            <div class="account-info__descrption">{{account.description}}</div>
+            <div class="account-info__email">
+                <span>Контактные данные:<br>{{account.email}}</span>
+            </div>
+        </div>
+    
+
+    <div class="account-timetable"> <!-- Здеся надо просто навести красоты -->
+        <div class="account-timetable__title">Расписание занятий</div>
+
+        {% for onegroup in account.group.all %}
+            {% for lesson in onegroup.timetable.all %}
+                <div class="account-timetable__block">
+                     <div class="account-timetable__office">Кабинет: {{lesson.classroom}}</div>
+                     <div class="account-timetable__office">День: {{lesson.dayWeek}}</div>
+                     <div class="account-timetable__time">Время: {{lesson.time}} </div>
+                </div>
+                <br>
+            {% endfor %}
+
+
+        {% endfor %}
+    </div></div>
+    <div class="account-projects">
+        <div class="account-projects__title">Проекты ученика</div> <!-- Здеся надо просто навести красоты -->
+            <div class="infoblock" id="id01">
+                {% for project in account.projects.all %}
+                    <div onclick="location.href='{% url 'project' project.id %}';" class="main_block account-projects__main-block">
+                        <h2 style="font-family: 'RobotoBold';">{{project.name}}</h2>
+                        <img src="{{project.face.image.url}}" alt="{{project.name}}" srcset="">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock content %}
+    {% block script %}<script src="{% static 'js/account.js' %}"></script>{% endblock script %}
