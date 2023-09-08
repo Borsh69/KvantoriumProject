@@ -5,8 +5,10 @@
 
 <div class="infoblock" id="id01">
     {% for competition in competitions %}
-        <div target="_blank" onClick="javascript:window.open('https://www.научим.online/programming-2023', '_blank');" class="main_block Maths">
+        <div style="border-radius: 10px;" target="_blank" onClick="javascript:window.open('{{ competition.contacts }}', '_blank');" class="main_block Maths">
             <h2 class="h2Competitions">{{competition.name}}</h2>
+            <h2 style="margin-top: 10px;" class="h2Competitions">{{competition.date | date:'d-m-Y H:i'}}</h2>
+            <h2 style="margin-top: 10px;" class="h2Competitions">Направление: {{competition.kvantum}}</h2>
             <img src="{{competition.face.image.url}}" alt="{{competition.name}}" srcset="">
         </div>
     {% endfor %}
