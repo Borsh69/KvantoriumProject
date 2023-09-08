@@ -13,9 +13,10 @@ def home(request):
     else:
         id_per = 2
     account = Account.objects.get(id=id_per)
+    p = True
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     projects = Project.objects.filter(Q(name__iregex=q) | Q(description__iregex=q) | Q(kvantum__icontains=q))
-    context = {'projects': projects, 'account': account}
+    context = {'projects': projects, 'account': account, 'home': p}
     return render(request, 'base/home.html', context)
 
 
@@ -137,8 +138,9 @@ def kvantum(request):
         id_per = 2
     account = Account.objects.get(id=id_per)
     q = request.GET.get('q')
+    p = True
     projects = Project.objects.filter(kvantum__icontains=q)
-    context = {'projects': projects, 'account': account}
+    context = {'projects': projects, 'account': account, 'home': p}
     return render(request, 'base/kvantum.html', context)
 
 def rating(request):
@@ -172,5 +174,21 @@ def competitions(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     competitions = Competitions.objects.filter(Q(name__iregex=q) | Q(description__iregex=q) | Q(kvantum__icontains=q))
     account = Account.objects.get(id=id_per)
-    context = {'competitions': competitions, 'account': account}
+    print(request.path)
+    p = True
+    context = {'competitions': competitions, 'account': account, 'competition': p}
     return render(request, 'base/competitions.html', context)
+
+
+
+def CompetitionType(request):
+    if "id" in request.session:
+        id_per = int(request.session['id'])
+    else:
+        id_per = 2
+    account = Account.objects.get(id=id_per)
+    p = True
+    q = request.GET.get('q')
+    compe = Competitions.objects.filter(kvantum__icontains=q)
+    context = {'competition': compe, 'account': account, 'competition': p}
+    return render(request, 'base/typecompe.html', context)

@@ -11,6 +11,7 @@ urlpatterns = [
     path('buy/<str:pk>/', views.buy, name="buy"),
     path("rating/", views.rating, name="rating"),
     path("competitions/", views.competitions, name="competitions"),
+    path("competitions/", views.CompetitionType, name="competitionsType"),
 
 
 ]
