@@ -27,7 +27,7 @@
 			<a href="/"><img src="{% static 'img/icon.png' %}" class="logo"></a>
 			<div class="header__buttons">
 				<form action="{% url 'home' %}" method="get" class="search">
-					<img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""><span><input name="q" type="text" class="field"><input  type="submit" value="Найти" class="submit"></span>
+					<img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""><span><input name="s" type="text" class="field"><input  type="submit" value="Найти" class="submit"></span>
 				</form>
 				<a class="search_mobile" href=""><img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""></a>
 				<a href="/shop/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/shop_icon.png'%}" alt="" srcset=""></a>
@@ -53,18 +53,18 @@
 				<ul>
 					{%if home %}
 						<li><a style="font-family: 'RobotoMedium'" href="{% url 'home' %}">All</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Vr">VR</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=It">IT</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Media">MEDIA</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Ind-Design">IND-DESIGN</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Energy">ENERGY</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Bio">BIO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Neuro">NEURO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Nano">NANO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Hi-Tech">HI-TECH</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Geo">GEO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Aero">AERO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Ind-Robo">IND-ROBO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Vr">VR</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=It">IT</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Media">MEDIA</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Ind-Design">IND-DESIGN</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Energy">ENERGY</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Bio">BIO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Neuro">NEURO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Nano">NANO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Hi-Tech">HI-TECH</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Geo">GEO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Aero">AERO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Ind-Robo">IND-ROBO</a></li><br>
 					{% endif %}
 
 					{%if competition %}
@@ -90,18 +90,18 @@
 				<ul>
 					{% if home %}
 						<li><a style="font-family: 'RobotoMedium'" href="{% url 'home' %}">All</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Vr">VR</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=It">IT</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Media">MEDIA</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Ind-Design">IND-DESIGN</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Energy">ENERGY</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Bio">BIO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Neuro">NEURO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Nano">NANO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Hi-Tech">HI-TECH</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Geo">GEO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Aero">AERO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/kvantum/?q=Ind-Robo">IND-ROBO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Vr">VR</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=It">IT</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Media">MEDIA</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Ind-Design">IND-DESIGN</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Energy">ENERGY</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Bio">BIO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Neuro">NEURO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Nano">NANO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Hi-Tech">HI-TECH</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Geo">GEO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Aero">AERO</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="/?q=Ind-Robo">IND-ROBO</a></li><br>
 					{% endif %}
 
 					{% if competition %}
