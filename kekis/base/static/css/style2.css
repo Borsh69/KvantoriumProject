@@ -348,7 +348,6 @@ header{
     width: 50px;	
     height: 50px;
     background-image: url(../img/heart-outlined.png);
-	background-color: rgba();
     background-repeat: no-repeat;
     background-size: contain;
     right: 0;
@@ -360,15 +359,19 @@ header{
     background-image: url(../img/heart-filled.png);
 }
 .main-block__button__liked {
+    z-index: 8;
     flex: 0 0 17%;
     display: block;
+	position: absolute;
     text-align: left;
-    width: 50px;
+    width: 50px;	
     height: 50px;
     background-image:x url(../img/heart-filled.png);
     background-repeat: no-repeat;
     background-size: contain;
-    margin: 30% 0 0 auto;
+    right: 0;
+	bottom: 0;
+	border-radius: 10px;
     transition: .2s;
 }
 .main-block__button__liked:hover {
