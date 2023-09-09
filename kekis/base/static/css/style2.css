@@ -354,6 +354,7 @@ header{
 	bottom: 0;
 	border-radius: 10px;
     transition: .2s;
+	pointer-events: none;
 }
 .main-block__button:hover {
     background-image: url(../img/heart-filled.png);
