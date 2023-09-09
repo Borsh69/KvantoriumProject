@@ -1,4 +1,4 @@
-							* {
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -338,6 +338,41 @@ header{
 	background-color: white;
 	color: black;
 }
+
+.main-block__button {
+	z-index: 8;
+    flex: 0 0 17%;
+    display: block;
+    text-align: left;
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/heart-outlined.png);
+	background-color: rgba();
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 30% 0 0 auto;
+    transition: .2s;
+}
+.main-block__button:hover {
+    background-image: url(../img/heart-filled.png);
+}
+.main-block__button__liked {
+    flex: 0 0 17%;
+    display: block;
+    text-align: left;
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/heart-filled.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 30% 0 0 auto;
+    transition: .2s;
+}
+.main-block__button__liked:hover {
+    background-image: url(../img/heart-outlined.png);
+}
+
+
 .registration-cssave.element-show{
 	-webkit-animation-duration: 1.1s;
 	animation-duration: 1.1s;
@@ -382,6 +417,7 @@ header{
 	opacity: 1;
 	transform: translateY(0px);
 }
+
 
 
 @media (max-width: 1440px){

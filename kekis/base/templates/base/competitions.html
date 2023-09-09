@@ -7,7 +7,8 @@
     {% for competition in competitions %}
         <div target="_blank" onClick="javascript:window.open('https://www.научим.online/programming-2023', '_blank');" class="main_block Maths">
             <h2 class="h2Competitions">{{competition.name}}</h2>
-            <img src="{{competition.face.image.url}}" alt="{{competition.name}}" srcset="">
+            <img class="backImg" src="{{competition.face.image.url}}" alt="{{competition.name}}" srcset="">
+            <div class="main-block__button" data-catid="{{competition.id}}"></div>
         </div>
     {% endfor %}
 </div>
