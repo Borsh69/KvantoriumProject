@@ -388,14 +388,20 @@ header{
 
 .h2Date {
 	display: block;
-	position: relative;
-	margin: 10px auto auto auto;
+	position: absolute;
+	font-size: 24px;
+	left: 4 px;
+	margin: 5px auto auto auto;
+	font-family: 'RobotoBold';
 }
 
 .h2Kvantum{
 	display: block;
-	position: relative;
-	margin: 10px auto auto auto;
+	position: absolute;
+	left: 4 px;
+	font-size: 24px;
+	margin: 5px auto auto auto;
+	font-family: 'RobotoBold';
 
 }
 
