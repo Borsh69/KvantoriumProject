@@ -6,7 +6,7 @@
 
 <div class="infoblock" id="id01">
     {% for competition in competitions %}
-        <div  target="_blank" onClick="javascript:window.open('{{ competition.contacts }}', '_blank');" class="main_block Maths">
+        <div onClick="javascript:window.open('{{ competition.contacts }}', '_blank');" target="_blank" class="main_block Maths">
             <h2 class="h2Competitions">{{competition.name}}</h2>
             <div class="main-block__additional__info">
                 <h2 class="h2Date">Дата: {{competition.date | date:'d-m-Y'}}</h2>
@@ -14,7 +14,7 @@
                 <h2 class="h2Kvantum">Направление: {{competition.kvantum}}</h2>
             </div>
             <img src="{{competition.face.image.url}}" alt="{{competition.name}}" srcset="">
-            <div class="main-block__button" data-catid="{{competition.id}}"></div>
+            <div class="main-block__button" data-catid="{{competition.id}}" onclick="event.cancelBubble=true;"></div>
         </div>
     {% endfor %}
 </div>
@@ -22,4 +22,4 @@
 
 {% endblock %}
 
-{% block script %}<script src="{% static 'js/competition.js' %}"></script>{% endblock script %}
+{% block script %}<script src="{% static 'js/script.js' %}"></script>{% endblock script %}

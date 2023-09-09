@@ -354,7 +354,6 @@ header{
 	bottom: 0;
 	border-radius: 10px;
     transition: .2s;
-	pointer-events: none;
 }
 .main-block__button:hover {
     background-image: url(../img/heart-filled.png);
@@ -388,20 +387,14 @@ header{
 
 .h2Date {
 	display: block;
-	position: absolute;
-	font-size: 24px;
-	left: 4 px;
-	margin: 5px auto auto auto;
-	font-family: 'RobotoBold';
+	position: relative;
+	margin: 10px auto auto auto;
 }
 
 .h2Kvantum{
 	display: block;
-	position: absolute;
-	left: 4 px;
-	font-size: 24px;
-	margin: 5px auto auto auto;
-	font-family: 'RobotoBold';
+	position: relative;
+	margin: 10px auto auto auto;
 
 }
 
