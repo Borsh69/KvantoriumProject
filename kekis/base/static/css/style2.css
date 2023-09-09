@@ -343,14 +343,17 @@ header{
 	z-index: 8;
     flex: 0 0 17%;
     display: block;
+	position: absolute;
     text-align: left;
-    width: 50px;
+    width: 50px;	
     height: 50px;
     background-image: url(../img/heart-outlined.png);
 	background-color: rgba();
     background-repeat: no-repeat;
     background-size: contain;
-    margin: 30% 0 0 auto;
+    right: 0;
+	bottom: 0;
+	border-radius: 10px;
     transition: .2s;
 }
 .main-block__button:hover {
@@ -362,7 +365,7 @@ header{
     text-align: left;
     width: 50px;
     height: 50px;
-    background-image: url(../img/heart-filled.png);
+    background-image:x url(../img/heart-filled.png);
     background-repeat: no-repeat;
     background-size: contain;
     margin: 30% 0 0 auto;
@@ -370,6 +373,26 @@ header{
 }
 .main-block__button__liked:hover {
     background-image: url(../img/heart-outlined.png);
+}
+
+.main-block__additional__info {
+	position:absolute;
+	bottom: 10px;
+	left: 10px;
+	background: none;
+}
+
+.h2Date {
+	display: block;
+	position: relative;
+	margin: 10px auto auto auto;
+}
+
+.h2Kvantum{
+	display: block;
+	position: relative;
+	margin: 10px auto auto auto;
+
 }
 
 
