@@ -120,7 +120,7 @@ function getCSRFToken() {
 }
   
 $(document).ready(function() {
-  $(document).on("click","div.main-block__button", function() {
+  $(document).on("click",".main-block__button", function() {
       $(this).addClass("main-block__button__liked").removeClass("main-block__button");
       const catid = $(this).attr("data-catid");
       const csrftoken = getCSRFToken();
@@ -141,7 +141,7 @@ $(document).ready(function() {
   });
 
 
-  $(document).on("click", "div.main-block__button__liked", function() {
+  $(document).on("click", ".main-block__button__liked", function() {
       $(this).addClass("main-block__button").removeClass("main-block__button__liked");
       const catid = $(this).attr("data-catid");
       const csrftoken = getCSRFToken();
