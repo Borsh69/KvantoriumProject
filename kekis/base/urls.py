@@ -10,7 +10,8 @@ urlpatterns = [
     path('buy/<str:pk>/', views.buy, name="buy"),
     path("rating/", views.rating, name="rating"),
     path("competitions/", views.competitions, name="competitions"),
-    
+    path("liked/", views.liked, name="liked"),
+    path("unliked/", views.unliked, name="unliked"),
 
 
 ]
