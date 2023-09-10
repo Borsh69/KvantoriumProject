@@ -47,7 +47,19 @@
                         <img src="{{project.face.image.url}}" alt="{{project.name}}" srcset="">
                     </div>
                 {% endfor %}
-            </div>
         </div>
+    </div>
+
+    <div class="account-projects">
+        <div class="account-projects__title">Отслеживаемые конкурсы</div> <!-- Здеся надо просто навести красоты -->
+            <div class="infoblock" id="id01">
+                {% for competition in account.favorite.all %}
+                    <div onclick="location.href='{{competition.contacts}}';" class="main_block account-projects__main-block">
+                        <h2 style="font-family: 'RobotoBold';">{{competition.name}}</h2>
+                        <img src="{{competition.face.image.url}}" alt="{{competition.name}}" srcset="">
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
     {% endblock content %}
     {% block script %}<script src="{% static 'js/account.js' %}"></script>{% endblock script %}
