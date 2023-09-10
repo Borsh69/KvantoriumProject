@@ -120,43 +120,42 @@ function getCSRFToken() {
 }
   
 $(document).ready(function() {
-  $(document).on("click",".main-block__button", function() {
-      $(this).addClass("main-block__button__liked").removeClass("main-block__button");
+  $("#like_button").on("click", function() {
       const catid = $(this).attr("data-catid");
       const csrftoken = getCSRFToken();
 
-      $.ajax({
-          type: "POST",
-          url: "/liked/",
-          data: {
-              'liked_id': catid
-          },
-          beforeSend: function(xhr) {
-              xhr.setRequestHeader('X-CSRFToken', csrftoken);
-          },
-          success: function(data) {
-              console.log(data);
-          }
-      });
-  });
+      if ($(this).hasClass("main-block__button")) {
+        $(this).addClass("main-block__button__liked").removeClass("main-block__button");
 
+        $.ajax({
+            type: "POST",
+            url: "/liked/",
+            data: {
+                'liked_id': catid
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken);
+            },
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    } else {
+        $(this).addClass("main-block__button").removeClass("main-block__button__liked");
 
-  $(document).on("click", ".main-block__button__liked", function() {
-      $(this).addClass("main-block__button").removeClass("main-block__button__liked");
-      const catid = $(this).attr("data-catid");
-      const csrftoken = getCSRFToken();
-
-      $.ajax({
-          type: "POST",
-          url: "/unliked/",
-          data: {
-              'liked_id': catid
-          },
-          beforeSend: function(xhr) {
-              xhr.setRequestHeader('X-CSRFToken', csrftoken);
-          },
-          success: function(data) {
-          }
-      });
+        $.ajax({
+            type: "POST",
+            url: "/unliked/",
+            data: {
+                'liked_id': catid
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken);
+            },
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    }
   });
 });
