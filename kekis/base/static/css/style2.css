@@ -4,12 +4,12 @@
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 0);
 
-    font-family: 'RobotoReg';
+    font-family: 'RobotoMedium';
     background-color: #01161E;
     color: white;
 }
 @font-face {
-    font-family: 'RobotoReg';
+    font-family: 'RobotoMedium';
     src: url(../fonts/stylesheet.css);
 }
 ::selection {
@@ -46,8 +46,6 @@ header{
 	background-color: #01161E;
 }
 .logo{
-	background-color: white;
-	filter: invert(1);
 	height: 50px;
 }
 .heading{
@@ -138,9 +136,10 @@ header{
 .account-info__logo div {
 	height: 100%;
 	width: 100%;
-	background-color: #ffffff00;
+	background-color: #01161E;;
 }
 .account-info__avatar {
+	border-radius: 6px;
     width: calc(var(--index) * 10);
     box-shadow: 0 0 5px 5px white;
 }
@@ -388,12 +387,14 @@ header{
 
 .h2Date {
 	display: block;
+	font-family: 'RobotoBold';
 	position: relative;
 	margin: 10px auto auto auto;
 }
 
 .h2Kvantum{
 	display: block;
+	font-family: 'RobotoBold';
 	position: relative;
 	margin: 10px auto auto auto;
 

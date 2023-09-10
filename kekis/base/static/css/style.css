@@ -107,7 +107,7 @@ header{
 }
 
 .logo{
-	background-color: white;
+	background-color: #01161E;;
 	filter: invert(1);
 	height: 113px;
 }
@@ -290,13 +290,14 @@ header{
 	font-size: 150%;
 	cursor: default;
 	margin: 210px 0 0 320px;
-	background-color: rgb(0, 0, 0);
+	background-color: #01161E;
 	font-size: 120%;
 	padding: 20px;
 	border: 1px solid white;
 	box-shadow: 0 0 10px 3px white;
 }
 .popup_content > ul > li{
+	background-color: #01161E;
 	display: inline-block;
 	margin-bottom: 15px;
 	background-color: #00000000;
@@ -304,6 +305,7 @@ header{
 	font-size: 110%;
 }
 .popup_content > ul > li::after{
+	background-color: #01161E;
 	display: block;
 	position: absolute;
 	left: 0;
@@ -315,6 +317,7 @@ header{
 	transition: width 0.3s ease-out;
 }
 .popup_content > ul > li:hover::after{
+	background-color: #01161E;
 	width: calc(100% - 4px);
 }
 #filters_popup {
@@ -773,6 +776,7 @@ span.sim-dot {
 		margin: 10px 200px 0;
 	}
 	.popup_content{
+		background-color: #01161E;
 		margin-left: 220px;
 	}
 }
@@ -781,6 +785,7 @@ span.sim-dot {
 		margin: 10px 65px 0;
 	}
 	.popup_content{
+		background-color: #01161E;
 		margin-left: 120px;
 	}
 	.heading{
@@ -792,6 +797,7 @@ span.sim-dot {
 		margin: 10px 40px 0 40px;
 	}
 	.popup_content{
+		background-color: #01161E;
 		margin-left: 70px;
 	}
 	.filter{
@@ -846,6 +852,7 @@ span.sim-dot {
 		margin: 5px 20px 0;
 	}
 	.popup_content {
+		background-color: #01161E;
 		margin-left: 220px;
 	}
 	.shop__block {
