@@ -160,6 +160,9 @@ header{
 	margin-top: 7px;
 	font-size: 30px;
 }
+.account_underImg_info {
+	background: none;
+}
 .account-info__email span{
 	font-size: 30px;
 }
@@ -445,6 +448,7 @@ header{
 	opacity: 1;
 	transform: translateY(0px);
 }
+
 
 
 
