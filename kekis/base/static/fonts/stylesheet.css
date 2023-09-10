@@ -13,10 +13,6 @@
 	src: url('Roboto-Bold.ttf');
 }
 @font-face {
-	font-family: 'RobotoReg';
-	src: url('Roboto-Regular.ttf');
-}
-@font-face {
 	font-family: 'RobotoThin';
 	src: url('Roboto-Thin.ttf');
 }
