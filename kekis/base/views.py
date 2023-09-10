@@ -171,4 +171,26 @@ def competitions(request):
     context = {'competitions': competitions, 'account': account, 'competition': p}
     return render(request, 'base/competitions.html', context)
 
+def liked(request):
+    if 'id' in request.session:
+        id_per = request.session['id']
+        account = Account.objects.get(id=id_per)
+    else:
+        account = Account.objects.get(id=2)
+    if request.method == 'POST':
+        liked_id = request.POST.get('liked_id', None)
+        account.favorite.add(Competitions.objects.get(id=liked_id))
+        account.save()
+        return HttpResponse("<h1>Nice!</h1>")
 
+def unliked(request):
+    if 'id' in request.session:
+        id_per = request.session['id']
+        account = Account.objects.get(id=id_per)
+    else:
+        account = Account.objects.get(id=2)
+    if request.method == 'POST':
+        liked_id = request.POST.get('liked_id', None)
+        account.favorite.remove(Competitions.objects.get(id=liked_id))
+        account.save()
+        return HttpResponse("<h1>Nice!</h1>")

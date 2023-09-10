@@ -366,7 +366,7 @@ header{
     text-align: left;
     width: 50px;	
     height: 50px;
-    background-image:x url(../img/heart-filled.png);
+    background-image: url(../img/heart-filled.png);
     background-repeat: no-repeat;
     background-size: contain;
     right: 0;
