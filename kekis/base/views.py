@@ -164,7 +164,9 @@ def competitions(request):
     else:
         id_per = 2
     q = request.GET.get('q') if request.GET.get('q') != None else ''
+    s = request.GET.get('s') if request.GET.get('s') != None else ''
     competitions = Competitions.objects.filter(Q(name__iregex=q) | Q(description__iregex=q) | Q(kvantum__icontains=q))
+    competitions = competitions.filter(Q(name__iregex=s))
     account = Account.objects.get(id=id_per)
     print(request.path)
     p = True

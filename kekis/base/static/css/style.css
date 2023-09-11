@@ -337,7 +337,7 @@ header{
 	border: 1px solid #ffffff;
 	color: white;
 	font-size: 20px;
-	background: black;
+	background: #01161E;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -371,6 +371,7 @@ header{
 		height: 30px;
 		width: 30px;
 		cursor: pointer;
+		display: block;
 	}
 .navigation{
 	-webkit-animation-duration: 1s;
@@ -477,7 +478,9 @@ p{
 	position: relative;
 	overflow:hidden;
 	z-index: 1;
-	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	flex-basis: 333px;
 	flex-grow: 1;
 	border-radius: 10px;
@@ -513,7 +516,7 @@ p{
 	opacity: 1;
 	position: relative;
 	transition: all 0.4s;
-	color: black;
+	color: #151515;
 }
 .main_block > img{
 	opacity: 0.6;
@@ -532,7 +535,7 @@ p{
 	z-index: 7;
 	opacity: 1;
 	transition: all 0.4s;
-	color: black;
+	color: #151515;
 
 }
 .main_block.element-show{
@@ -809,6 +812,7 @@ span.sim-dot {
 		display: none;
 	}
 	.search_mobile{
+		visibility: hidden;
 		display: block;
 	}
 	footer{
