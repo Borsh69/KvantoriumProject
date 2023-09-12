@@ -25,7 +25,7 @@
 <body id="body">
 	<div class="container">
 		<header>
-			<a href="/"><img src="{% static 'img/logo.png' %}" style="height: 50px;"></a>
+			<a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" style="height: 50px;"></a>
 			<div class="header__buttons">
 				<form {% if competition %} action="{% url 'competitions' %}" {%else%} action="{% url 'home' %}" {% endif %}method="get" class="search">
 					<img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""><span><input name="s" type="text" class="field"><input  type="submit" value="Найти" class="submit"></span>
@@ -41,7 +41,7 @@
 				  	{% endif %}</a>
 			</div>
 			</header>
-		<h1 class="heading" style="font-family: 'RobotoBold';">{% block title %}ДОСТОЯНИЕ КВАНТОРИУМА{% endblock title %}</h1>
+		<h1 class="heading" style="font-family: 'RobotoBold';">{% block title %}ПРОЕКТЫ КВАНТОРИАНЦЕВ{% endblock title %}</h1>
 		{% block filters %}
 		<div class="filters">
 			<button style="font-family: 'RobotoBold'" id="pppBtn"class="filter"><img src="{% static 'img/filter.png' %}" alt="">Фильтры</button>

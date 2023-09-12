@@ -639,3 +639,21 @@ header{
 		margin: 10px 0 0 0;
 	}
 }
+
+
+
+.welcome{
+	
+	margin-bottom: 50px;
+	font-family: 'RobotoMedium';
+	background-color: rgba(0, 0, 0, 0);
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-name: fadeOut;
+	animation-name: fadeOut;
+	padding-top: 50px;
+	text-align: center;
+	font-size: 18pt;
+}

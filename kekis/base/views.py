@@ -7,7 +7,14 @@ from django.contrib.auth import authenticate, login
 import string   
 import random 
 
+
 def home(request):
+    return render(request, 'base/welcome.html')
+
+
+
+
+def projects(request):
     if "id" in request.session:
         id_per = int(request.session['id'])
     else:
