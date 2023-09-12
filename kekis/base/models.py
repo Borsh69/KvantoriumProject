@@ -72,7 +72,7 @@ class Account(models.Model):
     request_buy = models.CharField(max_length=999)
     score = models.IntegerField()
     size = models.CharField(max_length=10)
-    group = models.ManyToManyField(Group, null=True)
+    group = models.ManyToManyField(Group, blank=True, null=True)
     projects = models.ManyToManyField(Project, null=True, blank=True)
     favorite = models.ManyToManyField(Competitions, null=True, blank=True)
 
