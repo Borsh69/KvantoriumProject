@@ -55,11 +55,22 @@
             <div class="infoblock" id="id01">
                 {% for competition in account.favorite.all %}
                     <div onclick="location.href='{{competition.contacts}}';" class="main_block account-projects__main-block">
-                        <h2 style="font-family: 'RobotoBold';">{{competition.name}}</h2>
+                        <h2 class="h2Competitions">{{competition.name}}</h2>
+                        <div class="main-block__additional__info">
+                            <h2 class="h2Date">Дата: {{competition.date | date:'d-m-Y'}}</h2>
+                            <h2 class="h2Date">Время: {{competition.date | date:'H:i'}}</h2>
+                            <h2 class="h2Kvantum">Направление: {{competition.kvantum}}</h2>
+                        </div>
                         <img src="{{competition.face.image.url}}" alt="{{competition.name}}" srcset="">
+                        <div id="like_button" {% if competition in account.favorite.all %} class="main-block__button__liked" {% else %} class="main-block__button" {% endif %} data-catid="{{competition.id}}" onclick="event.cancelBubble=true;"></div>
                     </div>
                 {% endfor %}
         </div>
     </div>
     {% endblock content %}
-    {% block script %}<script src="{% static 'js/account.js' %}"></script>{% endblock script %}
+    {% block script %}
+        <script type="text/javascript" src="{% static 'libs/jquery/jquery.min.js' %}" defer></script>
+        <script type="text/javascript" src="{% static 'libs/jquery/moment.min.js' %}" defer></script>
+
+        <script src="{% static 'js/account.js' %}" defer></script>
+    {% endblock script %}
