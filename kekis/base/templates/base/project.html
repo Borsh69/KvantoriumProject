@@ -10,6 +10,7 @@
     <div class="sim-slider">
         <ul class="sim-slider-list">
             <li class="block"></li>
+                <li class="sim-slider-element"><img src="{{project.face.url}}" alt="{{project.face.id}}"></li>
             {% for image in project.image.all %}
                 <li class="sim-slider-element"><img src="{{image.image.url}}" alt="{{project.image.id}}"></li>
             {% endfor %}
@@ -23,8 +24,8 @@
         <p class="project-p">{{project.description}}</p>
         Контакты:
         <div class="contact">
-            {% for contact in project.contacts.all %}
-                <p>{{contact.last_name}} {{contact.first_name}}: <a href="tel:+79992387233">{{contact.phone}}</a></p>
+            {% for creator in project.creators.all %}
+                <p>{{creator.name}}</a></p>
             {% endfor %}
         </div>
     </div>

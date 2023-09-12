@@ -9,7 +9,7 @@ class ProjectAdmin(admin.ModelAdmin):
     inlines = [
         ImageInline,
     ]
-admin.site.register(Contacts)
+
 admin.site.register(Image)
 admin.site.register(Project)
 admin.site.register(Account)
