@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Project, Contacts, Image, Account, Buy
+from .models import Project, Image, Account, Buy
 from django.db.models import Q
 from django.http import HttpResponse
 from .forms import *
@@ -45,10 +45,8 @@ def buy(request, pk):
             ran = "Вы бедны"
     account = Account.objects.get(id=id_per)
     shop = Shop.objects.get(id=pk)
-    contacts = Contacts.objects.all()
     context = {'key': ran,
                'shop': shop,
-               'contacts': contacts,
                'account': account}
     return render(request, 'base/buy.html', context)
 
@@ -60,7 +58,7 @@ def project(request, pk):
         id_per = 2
     account = Account.objects.get(id=id_per)
     project = Project.objects.get(id=pk)
-    contacts = Contacts.objects.all()
+    contacts = project.creators.all()
     images = Image.objects.all()
     context = {'project': project,
                'contacts': contacts,
