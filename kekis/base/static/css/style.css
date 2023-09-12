@@ -296,6 +296,9 @@ header{
 	border: 1px solid white;
 	box-shadow: 0 0 10px 3px white;
 }
+.project-p{
+	font-size: 15pt;
+}
 .popup_content > ul > li{
 	background-color: #01161E;
 	display: inline-block;
