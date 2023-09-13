@@ -71,6 +71,7 @@ class Account(models.Model):
     password = models.CharField(max_length=40)
     request_buy = models.CharField(max_length=999)
     score = models.IntegerField()
+    isTeacher = models.BooleanField(default=False)
     size = models.CharField(max_length=10)
     group = models.ManyToManyField(Group, blank=True, null=True)
     projects = models.ManyToManyField(Project, null=True, blank=True)
