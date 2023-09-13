@@ -124,8 +124,7 @@ function MyClick(index) {
 
   const catid = index;
   const csrftoken = getCSRFToken();
-
-
+  
   let block = document.getElementById("like_button" + index);
   
   console.log(block);
