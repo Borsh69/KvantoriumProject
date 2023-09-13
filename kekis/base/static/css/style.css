@@ -683,10 +683,13 @@ footer > .tele:hover > img{
     top: 0;
     display: block;
     width: 300px;
-    height: 300px;
+    height: 200px;
 	overflow: hidden;
 
 	transition: opacity 0.5s ease-in;
+}
+.infodiv{
+	padding-top: 20px;
 }
 .sim-slider-element > img {
     opacity: 1;

@@ -9,7 +9,13 @@ import random
 
 
 def home(request):
-    return render(request, 'base/welcome.html')
+    if "id" in request.session:
+        id_per = int(request.session['id'])
+    else:
+        id_per = 2
+    account = Account.objects.get(id=id_per)
+    context = {'account': account}
+    return render(request, 'base/welcome.html', context)
 
 
 
@@ -68,7 +74,6 @@ def project(request, pk):
     contacts = project.creators.all()
     images = Image.objects.all()
     context = {'project': project,
-               'contacts': contacts,
                'images': images,
                'account': account}
     return render(request, 'base/project.html', context)

@@ -19,13 +19,13 @@
         <div class="sim-slider-arrow-right"></div>
         <div class="sim-slider-dots"></div>
     </div>
-    <div>
-        Описание:
-        <p class="project-p">{{project.description}}</p>
-        Контакты:
+    <div class="infodiv">
+        <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Описание:</p>
+        <p style="font-family: 'RobotoMedium'; font-size: 16pt;" class="project-p">{{project.description}}</p>
+        <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Контакты:</p>
         <div class="contact">
             {% for creator in project.creators.all %}
-                <p>{{creator.name}}</a></p>
+                <p style="font-family: 'RobotoMedium'; font-size: 17pt;">{{creator.name}}</a></p>
             {% endfor %}
         </div>
     </div>
