@@ -97,7 +97,7 @@
             </div>
             <img src="{{competition.face.image.url}}" alt="{{competition.name}}" srcset="">
             {% csrf_token %} 
-            <div id="like_button" {% if competition in account.favorite.all %} class="main-block__button__liked" {% else %} class="main-block__button" {% endif %} data-catid="{{competition.id}}" onclick="event.cancelBubble=true;"></div>
+            <div id="like_button{{competition.id}}" {% if competition in account.favorite.all %} class="main-block__button__liked" {% else %} class="main-block__button" {% endif %} data-catid="{{competition.id}}" onclick="event.cancelBubble=true;MyClick({{competition.id}});"></div>
         </div>
     {% endfor %}
 </div>
