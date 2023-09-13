@@ -456,9 +456,51 @@ header{
 	opacity: 1;
 	transform: translateY(0px);
 }
+/* TEACHER'S ACCOUNT*/
 
+.students-list {
+	display: block;
+}
 
+.students-list__title {
+	font-size: 26pt;
+	margin-bottom: 20px;
+}
 
+.student-block {
+	display: block;
+	text-align: center;
+	border: #AAAAAA 1px solid;
+	border-radius: 15px;
+	width: 20%;
+	height: 300px;
+	align-items: center;
+	justify-content: center;
+}
+.student-block > p {
+	font-size: 16pt;
+}
+
+.student-photo {
+	width: 80%;
+	height: auto;
+}
+.student-score__input {
+
+	width: 60%;
+	border: #AAAAAA 1px solid;
+	border-radius: 15px;
+	text-align: center;
+	align-self: center;
+	font-size: 20pt;
+}
+.student-score__button {
+	font-size: 16pt;
+	border:#AAAAAA 2px solid;
+	padding: 4px;
+	border-radius: 15px;
+	margin-top: 5px;
+}
 
 @media (max-width: 1440px){
 	.container{
