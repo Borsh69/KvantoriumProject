@@ -143,6 +143,13 @@ header{
     width: calc(var(--index) * 10);
     box-shadow: 0 0 5px 5px white;
 }
+.teacherdiv{
+	margin-bottom: 7px;
+	font-size: 20pt;
+	font-family: 'RobotoMedium';
+	font-weight: bold;
+}
+
 .account-info__name {
 	margin-bottom: 7px;
 	font-size: 42px;
@@ -197,7 +204,8 @@ header{
 	width: 35%;
 }
 .account-timetable__title {
-	font-size: 20px;
+	margin-bottom: 20px;
+	font-size: 30pt;
 }
 .account-timetable__block {
 	border: 1px solid white;

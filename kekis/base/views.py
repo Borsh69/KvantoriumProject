@@ -71,7 +71,6 @@ def project(request, pk):
         id_per = 2
     account = Account.objects.get(id=id_per)
     project = Project.objects.get(id=pk)
-    contacts = project.creators.all()
     images = Image.objects.all()
     context = {'project': project,
                'images': images,
@@ -85,39 +84,48 @@ def account(request, pk):
     d = "/" + str(d) + "/"
     if d in str(request.path):
         account = Account.objects.get(id=pk)
-        account_ws = Account.objects.all()
-        score = 0
-        id_num = []
-        rank_num = []
-        for i in range(account_ws.count()):
-            i += 1
-            p = Account.objects.get(id=i)
-            id_num.append(p.id)
-            rank_num.append(p.rank)
-        slovar_id_rank = dict(zip(id_num, rank_num))
-        
-        sorted_dict = {}
-        sorted_keys = sorted(slovar_id_rank, key=slovar_id_rank.get, reverse=True)  # [1, 3, 2]
-        for w in sorted_keys:
-                sorted_dict[w] = slovar_id_rank[w]
-        a = 1
-        for w in sorted_dict:
-            bob = Account.objects.get(id=w)
-            bob.score = a
-            bob.save()
-            a +=1
+        if account.isTeacher == False:
+            account_ws = Account.objects.all()
+            score = 0
+            id_num = []
+            rank_num = []
+            for i in range(account_ws.count()):
+                i += 1
+                p = Account.objects.get(id=i)
+                id_num.append(p.id)
+                rank_num.append(p.rank)
+            slovar_id_rank = dict(zip(id_num, rank_num))
+            
+            sorted_dict = {}
+            sorted_keys = sorted(slovar_id_rank, key=slovar_id_rank.get, reverse=True)  # [1, 3, 2]
+            for w in sorted_keys:
+                    sorted_dict[w] = slovar_id_rank[w]
+            a = 1
+            for w in sorted_dict:
+                bob = Account.objects.get(id=w)
+                bob.score = a
+                bob.save()
+                a +=1
 
 
-        context = {'account': account}
-        return render(request, 'base/account.html', context)
+            context = {'account': account}
+            return render(request, 'base/account.html', context)
+        else:
+            return redirect(f'/teacher/{pk}/')
     else:
         return redirect('/login/')
+        
+        
+        
 
 def login(request):
     if 'id' in request.session:
         id_per = int(request.session['id'])
-        response = redirect(f'/account/{id_per}/')
-        return response
+        accountf = Account.objects.get(id=id_per)
+        if accountf.isTeacher == False:
+            return redirect(f'/account/{id_per}/')
+        else:
+            return redirect(f'/teacher/{id_per}/')
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -206,3 +214,18 @@ def unliked(request):
         account.favorite.remove(Competitions.objects.get(id=liked_id))
         account.save()
         return HttpResponse("<h1>Nice!</h1>")
+    
+
+
+
+def teacher(request, pk):
+    if "id" in request.session:
+        id_per = int(request.session['id'])
+        account = Account.objects.get(id=id_per)
+        if account.isTeacher == True:
+            context = {'account': account}
+            return render(request, 'base/teacher.html', context)
+        else:
+            return redirect(f'/account/{id_per}')
+    else:
+        return redirect('/login')

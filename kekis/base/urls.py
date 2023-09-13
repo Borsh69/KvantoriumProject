@@ -13,6 +13,7 @@ urlpatterns = [
     path("competitions/", views.competitions, name="competitions"),
     path("liked/", views.liked, name="liked"),
     path("unliked/", views.unliked, name="unliked"),
+    path('teacher/<str:pk>/', views.teacher, name="teacher"),
 
 
 ]

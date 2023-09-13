@@ -1,0 +1,48 @@
+
+{% extends 'main.html' %}
+{% load static %}
+
+{% block filters %}{% endblock filters %}
+{% block title %}ПРОФИЛЬ{% endblock title %}
+{% block content %}
+    <div class="account-info">
+        <div class="account-info__logo">
+            <img class="account-info__avatar" src="{{account.photo.url}}" alt="" srcset="">
+            <div style="background: none;">
+            </div>
+        </div>
+        <div class="account-info__info">
+            <div class="account-info__name">{{account.name}}</div>
+            <div class="account-info__email">
+                <span>Контактные данные:<br>{{account.email}}</span>
+            </div>
+        </div>
+    
+
+    <div class="account-timetable"> <!-- Здеся надо просто навести красоты -->
+        <div class="account-timetable__title">Расписание занятий:</div>
+
+        {% for onegroup in account.group.all %}
+            {% for lesson in onegroup.timetable.all %}
+                {% if lesson.id|divisibleby:2 %}
+                {% else %}
+                    <div class="teacherdiv">{{onegroup.name}}</div>
+                {% endif %}
+                <div class="account-timetable__block">
+                    <div class="account-timetable__office">Кабинет: {{lesson.classroom}}</div>
+                    <div class="account-timetable__office">День: {{lesson.dayWeek}}</div>
+                    <div class="account-timetable__time">Время: {{lesson.time}} </div>
+                </div>
+                <br>
+            {% endfor %}
+
+
+        {% endfor %}
+    </div></div>
+    {% endblock content %}
+    {% block script %}
+        <script type="text/javascript" src="{% static 'libs/jquery/jquery.min.js' %}" defer></script>
+        <script type="text/javascript" src="{% static 'libs/jquery/moment.min.js' %}" defer></script>
+
+        <script src="{% static 'js/account.js' %}" defer></script>
+    {% endblock script %}
