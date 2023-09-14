@@ -16,5 +16,5 @@ urlpatterns = [
     path("unliked/", views.unliked, name="unliked"),
     path('teacher/<str:pk>/', views.teacher, name="teacher"),
     path('addproject/', views.addproject, name="add"),
-
+    path('addaccount/', views.addaccount, name="addaccount"),
 ]
