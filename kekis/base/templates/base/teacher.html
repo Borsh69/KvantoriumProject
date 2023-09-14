@@ -39,18 +39,18 @@
 
         {% endfor %}
     </div></div>
-    
+        {% csrf_token %}
         {% for onegroup in account.group.all %}
         <div class="students-list__title">Студенты группы: {{onegroup.name}}</div>
-        <div class="students-list">
+            <div class="students-list">
             {% for student in onegroup.account_set.all %}
                 {% if student.name != account.name %}
                     <div class="student-block">
-                        <h2 class="student-name">{{student.name}}</h2>
+                        <h2 class="studentname">{{student.name}}</h2>
                         <img class="student-photo" src="{{student.photo.url}}" alt="" srcset="">
                         <p>Очки учащегося:</p>
-                        <input class="student-score__input" type="text" value={{student.score}}></input><br>
-                        <button class="student-score__button">Сохранить</button>
+                        <input id="{{student.id}}" class="student-score__input" type="text" value={{student.score}}></input><br>
+                        <button class="student-score__button" onClick="pointsChange({{student.id}});">Сохранить</button>
                     </div>
                 {% endif %}
             {% endfor %}

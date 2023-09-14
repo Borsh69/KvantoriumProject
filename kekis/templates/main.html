@@ -33,11 +33,11 @@
 				<a class="search_mobile" href=""><img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""></a>
 				{% if account.isTeacher %}
 					<a href="/addproject/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/addproject.svg'%}" alt="" srcset=""></a>
-					<a href="/addaccount/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/newaccount.svg'%}" alt="" srcset=""></a>
+					<a href="/addaccount/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/addStudent.svg'%}" alt="" srcset=""></a>
 				{% endif %}
 				<a href="/projects/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/projects.svg'%}" alt="" srcset=""></a>
 				<a href="/shop/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/shop_icon.png'%}" alt="" srcset=""></a>
-				<a href="/competitions/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/competition.svg'%}" alt="" srcset=""></a>
+				<a href="/competitions/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/competitions.svg'%}" alt="" srcset=""></a>
 				<a href="/login/">
 					{% if account.photo.url %}
 						<img class="account-info__avatar" style=" width: 40px; height: 40px; box-shadow: 0 0 2px 2px white;" src="{{account.photo.url}}" alt="" srcset="">
