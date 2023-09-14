@@ -22,7 +22,7 @@ function onEntry(entry) {
 
 
 
-  function getCSRFToken() {
+function getCSRFToken() {
     const name = 'csrftoken';
     const cookies = document.cookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
@@ -32,4 +32,4 @@ function onEntry(entry) {
         }
     }
     return null;
-  }
+}
