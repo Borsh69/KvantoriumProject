@@ -33,3 +33,23 @@ function getCSRFToken() {
     }
     return null;
 }
+
+
+function pointsChange(id){
+  const csrftoken = getCSRFToken();
+  let inputField = document.getElementById(id);
+  $.ajax({
+    type: "POST",
+    url: "/points_change/",
+    data: {
+      'student_id': id,
+      'points': inputField.value
+    },
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    },
+    success: function(data) {
+      console.log(data);
+    }
+  });
+}

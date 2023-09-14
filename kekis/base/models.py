@@ -64,7 +64,6 @@ class Account(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
     age = models.IntegerField()
     email = models.EmailField(max_length=200)
-    teacher = models.CharField(max_length=40)
     time_created = models.DateTimeField(auto_now_add=True)
     rank = models.IntegerField()
     login = models.CharField(max_length=40)
@@ -80,7 +79,7 @@ class Account(models.Model):
         return self.name
 
     class Meta:
-        unique_together = ('email', 'teacher', 'login', 'password', 'age', 'name')
+        unique_together = ('email', 'login', 'password', 'age', 'name')
 
 
 class Buy(models.Model):

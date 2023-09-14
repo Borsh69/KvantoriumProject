@@ -21,5 +21,5 @@ class AddProject(forms.ModelForm):
 class AddAccount(forms.ModelForm):
     class Meta:
         model = Account
-        fields = ['name', 'description', 'photo', 'age', 'email', 'teacher', 
+        fields = ['name', 'description', 'photo', 'age', 'email',
         'rank', 'login', 'password', 'score', 'size', 'group', 'projects']

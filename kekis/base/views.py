@@ -274,4 +274,13 @@ def addaccount(request):
             print("Error")
     else:
         form = AddAccount()
-    return render(request, 'base/newaccount.html', {'form': form,'account': accountf})
+    return render(request, 'base/newaccount.html', {'form': form,'account': account})
+
+def points_change(request):
+    if request.method == 'POST':
+        student_id = request.POST.get('student_id', None)
+        points = request.POST.get('points', None)
+        account = Account.objects.get(id=student_id)
+        account.score = points
+        account.save()
+        return HttpResponse("<h1>Nice!</h1>")
