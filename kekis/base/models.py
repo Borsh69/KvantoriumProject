@@ -69,7 +69,6 @@ class Account(models.Model):
     rank = models.IntegerField()
     login = models.CharField(max_length=40)
     password = models.CharField(max_length=40)
-    request_buy = models.CharField(max_length=999)
     score = models.IntegerField()
     isTeacher = models.BooleanField(default=False)
     size = models.CharField(max_length=10)

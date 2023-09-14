@@ -229,3 +229,49 @@ def teacher(request, pk):
             return redirect(f'/account/{id_per}')
     else:
         return redirect('/login')
+
+
+def addproject(request):
+    if 'id' in request.session:
+        id_per = int(request.session['id'])
+        accountf = Account.objects.get(id=id_per)
+        if accountf.isTeacher == False:
+            return redirect('/')
+    if request.method == 'POST':
+        form = AddProject(request.POST, request.FILES)
+        if form.is_valid():
+            cd = form.cleaned_data
+            try:
+                form.save()
+                return redirect('/projects/')
+            except :
+                form.add_error(None, "error add post")
+
+        else:
+            print("Error")
+    else:
+        form = AddProject()
+    return render(request, 'base/newproject.html', {'form': form,'account': accountf})
+
+
+def addaccount(request):
+    if 'id' in request.session:
+        id_per = int(request.session['id'])
+        accountf = Account.objects.get(id=id_per)
+        if accountf.isTeacher == False:
+            return redirect('/')
+    if request.method == 'POST':
+        form = AddAccount(request.POST, request.FILES)
+        if form.is_valid():
+            cd = form.cleaned_data
+            try:
+                form.save()
+                return redirect(f'/teacher/{id_per}/')
+            except :
+                form.add_error(None, "error add post")
+
+        else:
+            print("Error")
+    else:
+        form = AddAccount()
+    return render(request, 'base/newaccount.html', {'form': form,'account': accountf})

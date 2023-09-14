@@ -308,20 +308,24 @@ header{
 	text-align: center;
 }
 .form-label {
+	font-family: 'RobotoMedium';
 	display: inline-block;
 }
 .form-group {
 	width: 100%;
 	border: 1px solid white;
 	text-align: left;
+	border-radius: 5px;
 	margin-bottom: calc(var(--index) * .4);
 }
 .form-group p{
+	font-family: 'RobotoMedium';
 	display: flex;
 	font-size: 20px;
 	flex-wrap: nowrap;
 }
 .form-group label {
+	font-family: 'RobotoMedium';
 	margin-right: 10px;
 }
 .form-group input {
