@@ -34,19 +34,25 @@ function onEntry(entry) {
     return null;
   }
     
-  $(document).ready(function() {
-    $("#like_button").on("click", function() {
-        const catid = $(this).attr("data-catid");
-        const csrftoken = getCSRFToken();
+  function MyClick(index) {
+    console.log(index);
   
-        if ($(this).hasClass("main-block__button")) {
-          $(this).addClass("main-block__button__liked").removeClass("main-block__button");
+    const catid = index;
+    const csrftoken = getCSRFToken();
+    
+    let block = document.getElementById("like_button" + index);
+    
+    console.log(block);
   
-          $.ajax({
+     if (block.classList.contains("main-block__button")) {
+      block.classList.add("main-block__button__liked");
+      block.classList.remove("main-block__button");
+  
+      $.ajax({
               type: "POST",
               url: "/liked/",
               data: {
-                  'liked_id': catid
+                  'liked_id': index
               },
               beforeSend: function(xhr) {
                   xhr.setRequestHeader('X-CSRFToken', csrftoken);
@@ -54,15 +60,16 @@ function onEntry(entry) {
               success: function(data) {
                   console.log(data);
               }
-          });
-      } else {
-          $(this).addClass("main-block__button").removeClass("main-block__button__liked");
+      });
+    } else {
+      block.classList.add("main-block__button");
+      block.classList.remove("main-block__button__liked");
   
-          $.ajax({
+      $.ajax({
               type: "POST",
               url: "/unliked/",
               data: {
-                  'liked_id': catid
+                  'liked_id': index
               },
               beforeSend: function(xhr) {
                   xhr.setRequestHeader('X-CSRFToken', csrftoken);
@@ -70,8 +77,6 @@ function onEntry(entry) {
               success: function(data) {
                   console.log(data);
               }
-          });
-      }
-    });
-  });
-  
+      });
+    }
+  }
