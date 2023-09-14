@@ -12,7 +12,7 @@
 {% block content %}
 	<div class="infoblock rating_row" id="id01">
 		{% for person in person %}
-			{% if person.id == 2%}
+			{% if person.id == 2 or person.isTeacher %}
 			{% else %}
 			<div class="row__block" onclick="document.location.href='/account/{{person.id}}/'">
 				<main>

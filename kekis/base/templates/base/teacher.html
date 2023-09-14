@@ -48,7 +48,7 @@
                         <h2 class="studentname">{{student.name}}</h2>
                         <img class="student-photo" src="{{student.photo.url}}" alt="" srcset="">
                         <p>Очки учащегося:</p>
-                        <input id="{{student.id}}" class="student-score__input" type="text" value={{student.score}}></input><br>
+                        <input id="{{student.id}}" class="student-score__input" type="text" value={{student.rank}}></input><br>
                         <button class="student-score__button" onClick="pointsChange({{student.id}});">Сохранить</button>
                     </div>
                 {% endif %}

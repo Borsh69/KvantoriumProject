@@ -22,4 +22,4 @@ class AddAccount(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['name', 'description', 'photo', 'age', 'email',
-        'rank', 'login', 'password', 'score', 'size', 'group', 'projects']
+             'login', 'password', 'size', 'group', 'projects']

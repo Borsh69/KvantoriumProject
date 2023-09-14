@@ -27,7 +27,7 @@
 		<header>
 			<a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" style="height: 50px;"></a>
 			<div class="header__buttons">
-				<form {% if competition %} action="{% url 'competitions' %}" {%else%} action="{% url 'home' %}" {% endif %}method="get" class="search">
+				<form {% if competition %} action="{% url 'competitions' %}" {%else%} action="{% url 'projects' %}" {% endif %}method="get" class="search">
 					<img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""><span><input name="s" type="text" class="field"><input  type="submit" value="Найти" class="submit"></span>
 				</form>
 				<a class="search_mobile" href=""><img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""></a>
@@ -59,7 +59,7 @@
 				<a href="#" class="filters_close"></a>
 				<ul>
 					{%if home %}
-						<li><a style="font-family: 'RobotoMedium'" href="{% url 'home' %}">All</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="{% url 'projects' %}">All</a></li><br>
 						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Vr">VR</a></li><br>
 						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=It">IT</a></li><br>
 						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Media">MEDIA</a></li><br>
@@ -96,7 +96,7 @@
 			<div class="popup_content">
 				<ul>
 					{% if home %}
-						<li><a style="font-family: 'RobotoMedium'" href="{% url 'home' %}">All</a></li><br>
+						<li><a style="font-family: 'RobotoMedium'" href="{% url 'projects' %}">All</a></li><br>
 						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Vr">VR</a></li><br>
 						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=It">IT</a></li><br>
 						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Media">MEDIA</a></li><br>

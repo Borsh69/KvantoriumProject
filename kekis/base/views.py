@@ -281,6 +281,6 @@ def points_change(request):
         student_id = request.POST.get('student_id', None)
         points = request.POST.get('points', None)
         account = Account.objects.get(id=student_id)
-        account.score = points
+        account.rank = points
         account.save()
         return HttpResponse("<h1>Nice!</h1>")
