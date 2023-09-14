@@ -96,7 +96,7 @@
                 <h2 class="h2Kvantum">Направление: {{competition.kvantum}}</h2>
             </div>
             <img src="{{competition.face.image.url}}" alt="{{competition.name}}" srcset="">
-            {% csrf_token %} 
+            {% csrf_token %}
             <div id="like_button{{competition.id}}" {% if competition in account.favorite.all %} class="main-block__button__liked" {% else %} class="main-block__button" {% endif %} data-catid="{{competition.id}}" onclick="event.cancelBubble=true;MyClick({{competition.id}});"></div>
         </div>
     {% endfor %}

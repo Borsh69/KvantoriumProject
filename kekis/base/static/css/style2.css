@@ -201,20 +201,27 @@ header{
 .account-timetable {
 	margin-left: 20px;
 	box-sizing: border-box;
-	width: 35%;
+	display: flex;
+	flex-wrap: wrap;
 }
 .account-timetable__title {
 	margin-bottom: 20px;
 	font-size: 30pt;
+	margin: 3px;
 }
 .account-timetable__block {
 	border: 1px solid white;
+	border-radius: 15px;
+	padding: 10px;
+	margin: 3px;
 }
 .account-timetable__office {
 	font-size: 17px;
+	margin: 3px;
 }
 .account-timetable__time {
 	font-size: 18px;
+	margin: 3px;
 }
 .account-projects{
 	transform: translateY(100px);
