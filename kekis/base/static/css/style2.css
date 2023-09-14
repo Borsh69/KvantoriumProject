@@ -463,7 +463,8 @@ header{
 /* TEACHER'S ACCOUNT*/
 
 .students-list {
-	display: block;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .students-list__title {
@@ -472,12 +473,13 @@ header{
 }
 
 .student-block {
+	margin: 5px;
 	display: block;
 	text-align: center;
 	border: #AAAAAA 1px solid;
 	border-radius: 15px;
-	width: 20%;
-	height: 300px;
+	width: 10rem;
+	height: 3fr;
 	align-items: center;
 	justify-content: center;
 }
@@ -487,7 +489,7 @@ header{
 
 .student-photo {
 	width: 80%;
-	height: auto;
+	height: 20%;
 }
 .student-score__input {
 
@@ -497,6 +499,15 @@ header{
 	text-align: center;
 	align-self: center;
 	font-size: 20pt;
+}
+.studentname{
+	z-index: 7;
+	opacity: 1;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0);
+	font-size: 130%;
+	margin: 10px auto;
+	width: 100px;
 }
 .student-score__button {
 	font-size: 16pt;
