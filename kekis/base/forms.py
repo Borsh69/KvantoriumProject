@@ -12,3 +12,7 @@ class LoginForm(forms.ModelForm):
         }
 
 
+class AddProject(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['name', 'kvantum', 'face', 'description', 'creators']

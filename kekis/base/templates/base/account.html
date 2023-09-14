@@ -44,7 +44,7 @@
                 {% for project in account.projects.all %}
                     <div onclick="location.href='{% url 'project' project.id %}';" class="main_block account-projects__main-block">
                         <h2 class="h2Competitions">{{project.name}}</h2>
-                        <img src="{{project.face.image.url}}" alt="{{project.name}}" srcset="">
+                        <img src="{{project.face.url}}" srcset="">
                     </div>
                 {% endfor %}
         </div>
