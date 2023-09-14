@@ -468,6 +468,7 @@ header{
 }
 
 .students-list__title {
+	margin-top: 20px;
 	font-size: 26pt;
 	margin-bottom: 20px;
 
