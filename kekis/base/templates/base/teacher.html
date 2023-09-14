@@ -23,11 +23,10 @@
         <div class="account-timetable__title">Расписание занятий:</div>
 
         {% for onegroup in account.group.all %}
+        <div style="display: flex;flex-direction: column;">
+        <div class="teacherdiv">{{onegroup.name}}</div><br>
             {% for lesson in onegroup.timetable.all %}
-                {% if lesson.id|divisibleby:2 %}
-                {% else %}
-                    <div class="teacherdiv">{{onegroup.name}}</div>
-                {% endif %}
+                
                 <div class="account-timetable__block">
                     <div class="account-timetable__office">Кабинет: {{lesson.classroom}}</div>
                     <div class="account-timetable__office">День: {{lesson.dayWeek}}</div>
@@ -36,7 +35,7 @@
                 <br>
             {% endfor %}
 
-
+        </div>
         {% endfor %}
     </div></div>
         {% csrf_token %}
