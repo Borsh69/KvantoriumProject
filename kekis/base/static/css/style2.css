@@ -463,31 +463,45 @@ header{
 /* TEACHER'S ACCOUNT*/
 
 .students-list {
-	display: block;
+	
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .students-list__title {
 	font-size: 26pt;
 	margin-bottom: 20px;
-}
 
+}
+.student-name{
+	width: 100px;
+	z-index: 7;
+	opacity: 1;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0);
+	font-size: 130%;
+	margin: 10px auto;
+}
 .student-block {
-	display: block;
+	margin-bottom: 20px;
+
+
 	text-align: center;
 	border: #AAAAAA 1px solid;
 	border-radius: 15px;
-	width: 20%;
-	height: 300px;
+	width: 10rem;
+	height: 3fr;
 	align-items: center;
 	justify-content: center;
 }
 .student-block > p {
+	word-wrap: break-word;
 	font-size: 16pt;
 }
 
 .student-photo {
 	width: 80%;
-	height: auto;
+	height: 30%;
 }
 .student-score__input {
 
@@ -502,6 +516,7 @@ header{
 	font-size: 16pt;
 	border:#AAAAAA 2px solid;
 	padding: 4px;
+	margin-bottom: 10px;
 	border-radius: 15px;
 	margin-top: 5px;
 }

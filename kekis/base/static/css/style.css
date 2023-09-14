@@ -450,7 +450,7 @@ h2{
 	position: relative;
 	background-color: rgba(0, 0, 0, 0);
 	font-size: 130%;
-	margin: 10px 0;
+	margin: 10px auto;
 }
 p{
 	margin: 5px 10px;
