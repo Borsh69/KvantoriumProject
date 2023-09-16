@@ -2,25 +2,25 @@
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('Roboto-Light.ttf');
+	src: url(Roboto-Light.ttf);
 }
 @font-face {
 	font-family: 'RobotoBlack';
-	src: url('Roboto-Black.ttf');
+	src: url(Roboto-Black.ttf);
 }
 @font-face {
 	font-family: 'RobotoBold';
-	src: url('Roboto-Bold.ttf');
+	src: url(Roboto-Bold.ttf);
 }
 @font-face {
 	font-family: 'RobotoReg';
-	src: url('Roboto-Regular.ttf');
+	src: url(Roboto-Regular.ttf);
 }
 @font-face {
 	font-family: 'RobotoThin';
-	src: url('Roboto-Thin.ttf');
+	src: url(Roboto-Thin.ttf);
 }
 @font-face {
 	font-family: 'RobotoMedium';
-	src: url('Roboto-Medium.ttf');
+	src: url(Roboto-Medium.ttf);
 }

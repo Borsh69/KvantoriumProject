@@ -1,3 +1,4 @@
+@import url('http://fonts.cdnfonts.com/css/bankgothic-russ');
 @-webkit-keyframes fadeOut {
 	0% {
 		opacity: 0;
@@ -90,7 +91,7 @@ ul li{list-style: none;}
 img{vertical-align: top;pointer-events: none;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
-@import url('http://fonts.cdnfonts.com/css/bankgothic-russ');
+
 html{
 	overflow-x: hidden;
 }
@@ -336,7 +337,7 @@ header{
 #okno {
 	width: 90%;
 	height: 90%;
-	padding: 50px;
+	padding: 5	0px;
 	border: 1px solid #ffffff;
 	color: white;
 	font-size: 20px;
@@ -655,8 +656,8 @@ footer > .tele:hover > img{
 .sim-slider {
     text-align: center;
     max-width: 400px;
-    margin: 0 auto;
-    padding: 0 50px;
+    margin: 0 0;
+    padding: 0 40px;
 	float: left;
     background-color: rgba(255, 255, 255, 0);
 }
@@ -802,6 +803,22 @@ span.sim-dot {
 	}
 }
 @media (max-width: 768px){
+	#okno {
+		width: 90%;
+		height: 90%;
+		padding: 10px;
+		border: 1px solid #ffffff;
+		color: white;
+		font-size: 20px;
+		background: #01161E;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		z-index: 999999;
+	  }
 	.container{
 		margin: 10px 40px 0 40px;
 	}

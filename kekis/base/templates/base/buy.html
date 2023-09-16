@@ -1,13 +1,15 @@
 {% extends 'main.html' %}
 
-
+{% load static %}
 
 {% block title %}{{project.name}}{% endblock title %}
 
-
+{% block filters %}{% endblock filters %}
 {% block content %}
 <div class="infoblock project" style="justify-content: left;">
             <h1 style="font-size: calc(var(--index) * 2.5); margin: 40px 0; max-width: auto">Ваш ключ: </h1>
             <h1 style="font-size: calc(var(--index) * 2.5); margin: 40px 0; max-width: auto"> {{key}}</h1>
 </div>
 {% endblock content %}
+
+{% block script %}<script src="{% static 'js/buy.js' %}"></script>{% endblock script %}

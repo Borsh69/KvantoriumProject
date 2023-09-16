@@ -1,10 +1,10 @@
 {% extends 'main.html' %}
 
-
+{% load static %}
 
 {% block title %}{{project.name}}{% endblock title %}
 
-
+{% block filters %}{% endblock filters %}
 {% block content %}
 <div class="infoblock project" style="justify-content: left;">
     <div class="sim-slider">
@@ -32,3 +32,4 @@
 </div>
 
 {% endblock content %}
+{% block script %}<script src="{% static 'js/project.js' %}"></script>{% endblock script %}
