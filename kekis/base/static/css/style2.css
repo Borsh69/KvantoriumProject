@@ -617,7 +617,7 @@ header{
 	}
 	.sim-slider-element > img {
 		max-width: none;
-		max-width: calc(100vw - 190px);
+		max-width: 95%;
 		max-height: calc(100% - 20px);
 	}
 
@@ -628,7 +628,7 @@ header{
 	}
 	.account-info__info {
 		margin-left: 30px;
-		font-size: 16px;
+		font-size: 19px;
 	}
 	.account-info__email span {
 		word-break: normal;

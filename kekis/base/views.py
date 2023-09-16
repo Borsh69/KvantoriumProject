@@ -42,20 +42,18 @@ def buy(request, pk):
     else:
         return redirect('/login/')    
     
-    if "key" in request.session:
-        return redirect("/shop/")
+    
+    account = Account.objects.get(id=id_per)
+    shop = Shop.objects.get(id=pk)
+    if int(account.rank >= int(shop.price)):
+        ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 10))
+        request.session['key'] = ran
+        b = Buy(key=ran, name = str(account.name), size = str(account.size), type = str(shop.title))
+        account.rank = int(account.rank) - int(shop.price)
+        account.save(update_fields=["rank"])
+        b.save()
     else:
-        account = Account.objects.get(id=id_per)
-        shop = Shop.objects.get(id=pk)
-        if int(account.rank >= int(shop.price)):
-            ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 10))
-            request.session['key'] = ran
-            b = Buy(key=ran, name = str(account.name), size = str(account.size), type = str(shop.title))
-            account.rank = int(account.rank) - int(shop.price)
-            account.save(update_fields=["rank"])
-            b.save()
-        else:
-            ran = "Вы бедны"
+        ran = "Вы бедны"
     account = Account.objects.get(id=id_per)
     shop = Shop.objects.get(id=pk)
     context = {'key': ran,
