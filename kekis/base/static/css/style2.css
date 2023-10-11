@@ -2,24 +2,14 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0);
 
     font-family: 'RobotoMedium';
-    background-color: #01161E;
-    color: white;
+    color: black;
 }
 @font-face {
     font-family: 'RobotoMedium';
     src: url(../fonts/stylesheet.css);
 }
-::selection {
-	color: black;
-	background: #ffffff; /* Safari */
-	}
-::-moz-selection {
-	color: black;
-	background: #ffffff; /* Firefox */
-	}
 :root {
     --index: calc(1vh + 1vw);
 }
@@ -28,23 +18,6 @@
 }
 
 /* Заглавие */
-
-header{
-	justify-content: space-between;
-	display: flex;
-	padding: 20px 0 0 0;
-	margin: 0;
-	color: white;
-	background-color: #01161E;
-}
-header{
-	justify-content: space-between;
-	display: flex;
-	padding: 20px 0 0 0;
-	margin: 0;
-	color: white;
-	background-color: #01161E;
-}
 .logo{
 	height: 50px;
 }
@@ -68,28 +41,25 @@ header{
 	filter: none;
 }
 .search{
+	z-index: 9999;
 	position: relative;
 	left: 0;
 	display: flex;
 	align-items: center;
 	transition: 0.4s;
 }
-.search:hover{
-	left: -285px;
-	transition: 0.7s;
-}
 .search > span{
 	left: 30px;
 	opacity: 0;
+	margin-left: 0;
 	visibility: hidden;
 	display: flex;
 	position: absolute;
 	transition: visibility, opacity 0.2s .24s;
 	transform: rotateX(10);
 }
-.search:hover > span{
-	opacity: 1;
-	visibility: visible;
+.field {
+	width: 250px;
 }
 .search > span > input{
 	padding: 5px;
@@ -97,16 +67,26 @@ header{
 	border: 1px solid;
 	box-shadow: 0 0 10px white;
 }
-.search > img{
+#search_button {
 	transform: rotate(0deg);
-	transition: 0.5s;
+	transition: 0.3s;
+	margin-left: 0;
 }
-.search:hover > img{
-	transform: rotate(90deg);
+.search > button > img{
+	margin-left: 0;
 }
 .submit{
 	font-weight: bold;
 	cursor: pointer;
+}
+.search_popup {
+	z-index: 999;
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 
@@ -139,9 +119,8 @@ header{
 	background-color: #01161E;;
 }
 .account-info__avatar {
-	border-radius: 6px;
+	box-shadow: 0 0 0 2px rgb(0, 0, 0);
     width: calc(var(--index) * 10);
-    box-shadow: 0 0 5px 5px white;
 }
 .teacherdiv{
 	margin-bottom: 7px;
@@ -158,7 +137,7 @@ header{
 }
 .account-info__info{
 	padding: 10px;
-	width: 100%;
+	width: 50%;
 	word-wrap: normal;
 	font-size: 30px;
 	margin-left: 60px
@@ -201,16 +180,19 @@ header{
 .account-timetable {
 	margin-left: 20px;
 	box-sizing: border-box;
-	display: flex;
-	flex-wrap: wrap;
 }
 .account-timetable__title {
 	margin-bottom: 20px;
 	font-size: 30pt;
 	margin: 3px;
+
+}
+.account-timetable__blocks {
+	display: flex;
+	flex-wrap: wrap;
 }
 .account-timetable__block {
-	border: 1px solid white;
+	border: 1px solid rgb(0, 0, 0);
 	border-radius: 15px;
 	padding: 10px;
 	margin: 3px;
@@ -245,7 +227,7 @@ header{
 .account-projects__main-block {
 	transform: translateY(0);
 	opacity: 1;
-	border: 1px solid rgba(255, 255, 255, 0.37);
+	border: 2px solid rgba(255, 255, 255, 0.37);
 	transition: all 0.4s;
 }
 
@@ -320,9 +302,8 @@ header{
 }
 .form-group {
 	width: 100%;
-	border: 1px solid white;
+	border: 1px solid rgb(0, 0, 0);
 	text-align: left;
-	border-radius: 5px;
 	margin-bottom: calc(var(--index) * .4);
 }
 .form-group p{
@@ -351,14 +332,14 @@ header{
 }
 .login_button {
 	padding: 10px;
-	background-color: #01161E;
-	border: 1px solid white;
+	background-color: #ffffff;
+	border: 1px solid rgb(0, 0, 0);
 	font-size: 20px;
 	transition: 0.4s ease;
 }
 .login_button:hover {
-	background-color: white;
-	color: black;
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }
 
 .main-block__button {
@@ -447,15 +428,15 @@ header{
 	font-size: 20px;
 }
 .shop__block button {
-	background-color: #01161E;
-	border: 1px solid white;
+	background-color: #ffffff;
+	border: 1px solid rgb(0, 0, 0);
 	padding: 10px;
 	font-size: 20px;
 	transition: .2s;
 }
 .shop__block button:hover {
-	background-color: white;
-	color: black;
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }
 .shop__block.element-show {
 	-webkit-animation-duration: 1.1s;
@@ -541,10 +522,6 @@ header{
 	.container{
 		margin: 10px 200px 0;
 	}
-	.popup_content{
-		background-color: #01161E;
-		margin-left: 220px;
-	}
 
 	.row__block main{
 		flex-direction: column;
@@ -558,10 +535,6 @@ header{
 	.container{
 		margin: 10px 65px 0;
 	}
-	.popup_content{
-		background-color: #01161E;
-		margin-left: 120px;
-	}
 	.heading{
 	font-size: 2.5em;
 	}
@@ -569,10 +542,6 @@ header{
 @media (max-width: 768px){
 	.container{
 		margin: 10px 40px 0 40px;
-	}
-	.popup_content{
-		background-color: #01161E;
-		margin-left: 70px;
 	}
 	.filter{
 		display: block;
@@ -643,10 +612,6 @@ header{
 	.container{
 		margin: 5px 20px 0;
 	}
-	.popup_content {
-		background-color: #01161E;
-		margin-left: 220px;
-	}
 	.shop__block {
 		margin: 0 5px 10px;
 	}
@@ -672,6 +637,11 @@ header{
 		flex-direction: column;
 		opacity: 0;
 		transform: translateY(200px);
+	}
+	.account-timetable__blocks {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
 	}
 	.account-info__score {
 		text-decoration: underline;

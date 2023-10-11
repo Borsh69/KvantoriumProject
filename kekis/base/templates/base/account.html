@@ -23,19 +23,18 @@
     
   
     <div class="account-timetable"> <!-- Здеся надо просто навести красоты -->
+        <div class="account-timetable__title">Расписание занятий:</div>
+        <div class="account-timetable__blocks">
         {% for onegroup in account.group.all %}
-        <div class="account-timetable__title">Расписание занятий</div>
             {% for lesson in onegroup.timetable.all %}
                 <div class="account-timetable__block">
                      <div class="account-timetable__office">Кабинет: {{lesson.classroom}}</div>
                      <div class="account-timetable__office">День: {{lesson.dayWeek}}</div>
                      <div class="account-timetable__time">Время: {{lesson.time}} </div>
                 </div>
-                <br>
             {% endfor %}
-
-
         {% endfor %}
+        </div>
     </div></div>
     <div class="account-projects">
         <div class="account-projects__title">Проекты ученика</div> <!-- Здеся надо просто навести красоты -->

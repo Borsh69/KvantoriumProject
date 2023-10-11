@@ -20,12 +20,13 @@
 	
 </head>
 <body id="body">
+	<div class="search_popup" id="search_popup"></div>
 	<div class="container">
 		<header>
-			<a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" style="height: 50px;"></a>
+			<a href="{% url 'home' %}"><img src="{% static 'img/logo.svg' %}" class="logo"></a>
 			<div class="header__buttons">
-				<form {% if competition %} action="{% url 'competitions' %}" {%else%} action="{% url 'projects' %}" {% endif %}method="get" class="search">
-					<img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""><span><input name="s" type="text" class="field"><input  type="submit" value="Найти" class="submit"></span>
+				<form {% if competition %} action="{% url 'competitions' %}" {%else%} action="{% url 'projects' %}" {% endif %}method="get" class="search" id="search">
+					<button style="height: 30px; width: 30px" type="button" id="search_button"><img src="{% static 'img/search.png' %}" style="height: 30px;"  alt=""></button><span id="search_body"><input name="s" type="text" class="field" id="search_field"><input  type="submit" value="Найти" class="submit" id="search_submit"></span>
 				</form>
 				<a class="search_mobile" href=""><img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""></a>
 				{% if account.isTeacher %}
@@ -37,96 +38,100 @@
 				<a href="/competitions/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/competitions.svg'%}" alt="" srcset=""></a>
 				<a href="/login/">
 					{% if account.photo.url %}
-						<img class="account-info__avatar" style=" width: 40px; height: 40px; box-shadow: 0 0 2px 2px white;" src="{{account.photo.url}}" alt="" srcset="">
+						<img class="account-info__avatar" style="width: 40px; height: 40px; " src="{{account.photo.url}}" alt="" srcset="">
 				  	{% else %}
-					 	<img class="shop-avatar" style="width: 40px; height: 40px; box-shadow: 0 0 2px 2px white;" src="{% static 'img/person.png' %}" alt="" srcset="">
+					 	<img class="shop-avatar" style="width: 40px; height: 40px; box-shadow: 0 0 0 2px black;" src="{% static 'img/person.png' %}" alt="" srcset="">
 				  	{% endif %}</a>
 			</div>
 			</header>
 		<h1 class="heading" style="font-family: 'RobotoBold';">{% block title %}ПРОЕКТЫ КВАНТОРИАНЦЕВ{% endblock title %}</h1>
 		{% block filters %}
 		<div class="filters">
+			<div id="filters_popup">
+				<div id="okno">
+					<a href="#" class="filters_close"></a>
+					<ul>
+						{%if home %}
+							<li><a style="font-family: 'RobotoMedium'" href="{% url 'projects' %}">All</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Vr">VR</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=It">IT</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Media">MEDIA</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Ind-Design">IND-DESIGN</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Energy">ENERGY</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Bio">BIO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Neuro">NEURO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Nano">NANO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Hi-Tech">HI-TECH</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Geo">GEO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Aero">AERO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Ind-Robo">IND-ROBO</a></li><br>
+						{% endif %}
+	
+						{%if competition %}
+							<li><a style="font-family: 'RobotoMedium'" href="{% url 'competitions' %}">All</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Vr">VR</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=It">IT</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Media">MEDIA</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Ind-Design">IND-DESIGN</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Energy">ENERGY</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Bio">BIO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Neuro">NEURO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Nano">NANO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Hi-Tech">HI-TECH</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Geo">GEO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Aero">AERO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Ind-Robo">IND-ROBO</a></li><br>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+
+			<div id="popup" class="popup">
+				<div class="popup_content">
+					<ul>
+						{% if home %}
+							<li><a style="font-family: 'RobotoMedium'" href="{% url 'projects' %}">All</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Vr">VR</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=It">IT</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Media">MEDIA</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Ind-Design">IND-DESIGN</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Energy">ENERGY</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Bio">BIO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Neuro">NEURO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Nano">NANO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Hi-Tech">HI-TECH</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Geo">GEO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Aero">AERO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Ind-Robo">IND-ROBO</a></li><br>
+						{% endif %}
+	
+						{% if competition %}
+							<li><a style="font-family: 'RobotoMedium'" href="{% url 'competitions' %}">All</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Vr">VR</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=It">IT</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Media">MEDIA</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Ind-Design">IND-DESIGN</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Energy">ENERGY</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Bio">BIO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Neuro">NEURO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Nano">NANO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Hi-Tech">HI-TECH</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Geo">GEO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Aero">AERO</a></li><br>
+							<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Ind-Robo">IND-ROBO</a></li><br>
+						{% endif %}
+					</ul>
+					<span class="close"></span>
+				</div>
+			</div>
+
 			<button style="font-family: 'RobotoBold'" id="pppBtn"class="filter"><img src="{% static 'img/filter.png' %}" alt="">Фильтры</button>
 			<a style="font-family: 'RobotoBold'" href="#filters_popup" class="filter mobile"><img src="{% static 'img/filter.png' %}" alt="">Фильтры</a>
 			<button style="font-family: 'RobotoBold'" onclick="sortList()" class="filter" style="height: 20px;"><img src="{% static 'img/alphabet-up.png' %}" alt="">Возрастание</button>
 			<button style="font-family: 'RobotoBold'" onclick="sortListY()" class="filter"><img src="{% static 'img/alphabet-down.png' %}" alt="">Убывание</button>	
 		</div>
-		<div id="filters_popup">
-			<div id="okno">
-				<a href="#" class="filters_close"></a>
-				<ul>
-					{%if home %}
-						<li><a style="font-family: 'RobotoMedium'" href="{% url 'projects' %}">All</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Vr">VR</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=It">IT</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Media">MEDIA</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Ind-Design">IND-DESIGN</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Energy">ENERGY</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Bio">BIO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Neuro">NEURO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Nano">NANO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Hi-Tech">HI-TECH</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Geo">GEO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Aero">AERO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Ind-Robo">IND-ROBO</a></li><br>
-					{% endif %}
-
-					{%if competition %}
-						<li><a style="font-family: 'RobotoMedium'" href="{% url 'competitions' %}">All</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Vr">VR</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=It">IT</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Media">MEDIA</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Ind-Design">IND-DESIGN</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Energy">ENERGY</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Bio">BIO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Neuro">NEURO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Nano">NANO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Hi-Tech">HI-TECH</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Geo">GEO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Aero">AERO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Ind-Robo">IND-ROBO</a></li><br>
-					{% endif %}
-				</ul>
-			</div>
-		</div>
-		<div id="popup" class="popup">
-			<div class="popup_content">
-				<ul>
-					{% if home %}
-						<li><a style="font-family: 'RobotoMedium'" href="{% url 'projects' %}">All</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Vr">VR</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=It">IT</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Media">MEDIA</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Ind-Design">IND-DESIGN</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Energy">ENERGY</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Bio">BIO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Neuro">NEURO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Nano">NANO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Hi-Tech">HI-TECH</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Geo">GEO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Aero">AERO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/projects/?q=Ind-Robo">IND-ROBO</a></li><br>
-					{% endif %}
-
-					{% if competition %}
-						<li><a style="font-family: 'RobotoMedium'" href="{% url 'competitions' %}">All</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Vr">VR</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=It">IT</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Media">MEDIA</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Ind-Design">IND-DESIGN</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Energy">ENERGY</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Bio">BIO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Neuro">NEURO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Nano">NANO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Hi-Tech">HI-TECH</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Geo">GEO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Aero">AERO</a></li><br>
-						<li><a style="font-family: 'RobotoMedium'" href="/competitions/?q=Ind-Robo">IND-ROBO</a></li><br>
-				{% endif %}
-				</ul>
-				<span class="close"></span>
-			</div>
-		</div>
+		
+		
 		{% endblock filters %}
 		{% block content %}
 		
