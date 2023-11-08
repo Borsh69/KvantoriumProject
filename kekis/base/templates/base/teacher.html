@@ -14,6 +14,9 @@
         <div class="account-info__info">
             <div class="account-info__name">{{account.name}}</div>
             <div class="account-info__email">
+                <span>Почта:<br>{{account.email}}</span>
+            </div>
+            <div class="account-info__email">
                 <span>Контактные данные:<br>{{account.email}}</span>
             </div>
         </div>
@@ -22,11 +25,10 @@
     <div class="account-timetable"> <!-- Здеся надо просто навести красоты -->
         <div class="account-timetable__title">Расписание занятий:</div>
 
-        {% for onegroup in account.group.all %}
+        {% for onegroup in group %}
         <div style="display: flex;flex-direction: column;">
         <div class="teacherdiv">{{onegroup.name}}</div><br>
             {% for lesson in onegroup.timetable.all %}
-                
                 <div class="account-timetable__block">
                     <div class="account-timetable__office">Кабинет: {{lesson.classroom}}</div>
                     <div class="account-timetable__office">День: {{lesson.dayWeek}}</div>
@@ -39,10 +41,10 @@
         {% endfor %}
     </div></div>
         {% csrf_token %}
-        {% for onegroup in account.group.all %}
+        {% for onegroup in group %}
         <div class="students-list__title">Студенты группы: {{onegroup.name}}</div>
             <div class="students-list">
-            {% for student in onegroup.account_set.all %}
+            {% for student in onegroup.pupils.all %}
                 {% if student.name != account.name %}
                     <div class="student-block">
                         <h2 class="studentname">{{student.name}}</h2>

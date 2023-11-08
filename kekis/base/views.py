@@ -11,10 +11,19 @@ import re
 def home(request):
     if "id" in request.session:
         id_per = int(request.session['id'])
+
+        type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
+            account = Teacher.objects.get(id=id_per)
+        else:
+            tt = False
+            account = Account.objects.get(id=id_per)
     else:
+        tt = False
         id_per = 2
-    account = Account.objects.get(id=id_per)
-    context = {'account': account}
+        account = Account.objects.get(id=id_per)
+    context = {'account': account, 'type': tt}
     return render(request, 'base/welcome.html', context)
 
 
@@ -23,9 +32,18 @@ def home(request):
 def projects(request):
     if "id" in request.session:
         id_per = int(request.session['id'])
+
+        type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
+            account = Teacher.objects.get(id=id_per)
+        else:
+            tt = False
+            account = Account.objects.get(id=id_per)
     else:
         id_per = 2
-    account = Account.objects.get(id=id_per)
+        tt = False
+        account = Account.objects.get(id=id_per)
     p = True
     s = request.GET.get('s', '')  # Достаточно использовать второй аргумент для значения по умолчанию
     q = request.GET.get('q', '')
@@ -36,18 +54,24 @@ def projects(request):
     projects = Project.objects.filter(Q(name__icontains=s) | Q(description__icontains=s))
     projects = projects.filter(Q(kvantum__icontains=q))
 
-    context = {'projects': projects, 'account': account, 'home': p}
+    context = {'projects': projects, 'account': account, 'home': p, 'type': tt}
     return render(request, 'base/home.html', context)
 
 
 def buy(request, pk):
 
     if "id" in request.session:
+        type_acc = request.session['type']
         id_per = int(request.session['id'])
+        if type_acc=="teacher":
+            tt = True
+            return redirect(f'/teacher/{id_per}')   
+        else: 
+            tt = False
+            account = Account.objects.get(id=id_per)
+        
     else:
         return redirect('/login/')    
-    
-
     account = Account.objects.get(id=id_per)
     shop = Shop.objects.get(id=pk)
     if int(account.rank >= int(shop.price)):
@@ -63,58 +87,71 @@ def buy(request, pk):
     shop = Shop.objects.get(id=pk)
     context = {'key': ran,
             'shop': shop,
-            'account': account}
+            'account': account,
+            'type': tt}
     return render(request, 'base/buy.html', context)
 
 
 def project(request, pk):
     if "id" in request.session:
         id_per = int(request.session['id'])
+        type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
+            account = Teacher.objects.get(id=id_per)
+        else: 
+            tt = False
+            account = Account.objects.get(id=id_per)
     else:
+        tt = False
         id_per = 2
-    account = Account.objects.get(id=id_per)
+        account = Account.objects.get(id=id_per)
     project = Project.objects.get(id=pk)
     images = Image.objects.all()
     context = {'project': project,
                'images': images,
-               'account': account}
+               'account': account, 
+               'type': tt}
     return render(request, 'base/project.html', context)
 
 
 
 def account(request, pk):
     d = request.session.get('id')
+    type_acc = request.session['type']
+    if type_acc=="teacher":
+            tt = True
+    else: 
+        tt = False
     d = "/" + str(d) + "/"
     if d in str(request.path):
         account = Account.objects.get(id=pk)
-        if account.isTeacher == False:
-            account_ws = Account.objects.all()
-            score = 0
-            id_num = []
-            rank_num = []
-            for i in range(account_ws.count()):
-                i += 1
-                p = Account.objects.get(id=i)
-                id_num.append(p.id)
-                rank_num.append(p.rank)
-            slovar_id_rank = dict(zip(id_num, rank_num))
-            
-            sorted_dict = {}
-            sorted_keys = sorted(slovar_id_rank, key=slovar_id_rank.get, reverse=True)  # [1, 3, 2]
-            for w in sorted_keys:
-                    sorted_dict[w] = slovar_id_rank[w]
-            a = 1
-            for w in sorted_dict:
-                bob = Account.objects.get(id=w)
-                bob.score = a
-                bob.save()
-                a +=1
+        account_ws = Account.objects.all()
+        score = 0
+        id_num = []
+        rank_num = []
+        for i in range(account_ws.count()):
+            i += 1
+            p = Account.objects.get(id=i)
+            id_num.append(p.id)
+            rank_num.append(p.rank)
+        slovar_id_rank = dict(zip(id_num, rank_num))
+        
+        sorted_dict = {}
+        sorted_keys = sorted(slovar_id_rank, key=slovar_id_rank.get, reverse=True)  # [1, 3, 2]
+        for w in sorted_keys:
+                sorted_dict[w] = slovar_id_rank[w]
+        a = 1
+        for w in sorted_dict:
+            bob = Account.objects.get(id=w)
+            bob.score = a
+            bob.save()
+            a +=1
 
 
-            context = {'account': account}
-            return render(request, 'base/account.html', context)
-        else:
-            return redirect(f'/teacher/{pk}/')
+        context = {'account': account, 'type': tt}
+        return render(request, 'base/account.html', context)
+
     else:
         return redirect('/login/')
         
@@ -124,7 +161,7 @@ def account(request, pk):
 def login(request):
     ty = False
     if 'id' in request.session:
-        if 'type_acc' in request.session:
+        if 'type' in request.session:                
             type_acc = request.session['type']
             if type_acc=='pupil':   
                 id_per = int(request.session['id'])
@@ -153,6 +190,7 @@ def login(request):
                 print(ty)
                 if ty:
                     request.session['type'] = "teacher"
+                    print("dsadsad")
                     response = redirect(f'/teacher/{id_usr}/')
                 else:
                     request.session['type'] = "pupil"
@@ -173,21 +211,36 @@ def login(request):
 def rating(request):
     if "id" in request.session:
         id_per = int(request.session['id'])
+        type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
+            account = Teacher.objects.get(id=id_per)
+        else: 
+            tt = False
+            account = Account.objects.get(id=id_per)
     else:
         return redirect('/login/')
-    account = Account.objects.get(id=id_per)
+    
     rank  = Account.objects.all().order_by("-rank")
-    context = {'person': rank, "account": account}
+    context = {'person': rank, "account": account, 'type': tt}
     return render(request, 'base/rating.html', context)
 
 def shop(request):
     if "id" in request.session:
         id_per = int(request.session['id'])
+        type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
+            account = Teacher.objects.get(id=id_per)
+        else: 
+            tt = False
+            account = Account.objects.get(id=id_per)
     else:
+        tt = False
         id_per = 2
-    account = Account.objects.get(id=id_per)
+        account = Account.objects.get(id=id_per)
     shop = Shop.objects.all().order_by("-price")
-    context = {'account': account, "shop": shop}
+    context = {'account': account, "shop": shop, 'type': tt}
     return render(request, 'base/shop.html', context)
 
 
@@ -196,9 +249,17 @@ def shop(request):
 def competitions(request):
     if "id" in request.session:
         id_per = int(request.session['id'])
+        type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
+            account = Teacher.objects.get(id=id_per)
+        else: 
+            tt = False
+            account = Account.objects.get(id=id_per)
     else:
+        tt = False
         id_per = 2
-
+        account = Account.objects.get(id=id_per)
     q = request.GET.get('q', '')
     s = request.GET.get('s', '')
 
@@ -213,17 +274,22 @@ def competitions(request):
     if s:
         competitions = competitions.filter(Q(name__icontains=s))
 
-    account = Account.objects.get(id=id_per)
+    
     print(request.path)
     p = True
-    context = {'competitions': competitions, 'account': account, 'competition': p}
+    context = {'competitions': competitions, 'account': account, 'competition': p, 'type': tt}
     return render(request, 'base/competitions.html', context)
 
 
 def liked(request):
     if 'id' in request.session:
         id_per = request.session['id']
-        account = Account.objects.get(id=id_per)
+        type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
+            account = Teacher.objects.get(id=id_per)
+        else: 
+            account = Account.objects.get(id=id_per)
     else:
         account = Account.objects.get(id=2)
     if request.method == 'POST':
@@ -235,6 +301,9 @@ def liked(request):
 def unliked(request):
     if 'id' in request.session:
         id_per = request.session['id']
+        type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
         account = Account.objects.get(id=id_per)
     else:
         account = Account.objects.get(id=2)
@@ -251,10 +320,14 @@ def teacher(request, pk):
     if "id" in request.session:
         id_per = int(request.session['id'])
         type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
         print(type_acc)
         if type_acc=="teacher":
             teacher = Teacher.objects.get(id=id_per)
-            context = {'account': teacher}
+            group = Group.objects.all()
+            group = teacher.group_set.all()
+            context = {'account': teacher, 'group': group, 'type': tt}
             return render(request, 'base/teacher.html', context)
         else:
             return redirect(f'/account/{id_per}')
@@ -265,9 +338,10 @@ def teacher(request, pk):
 def addproject(request):
     if "id" in request.session:
         id_per = int(request.session['id'])
-        type_acc = int(request.session['type'])
+        type_acc = request.session['type']
         if type_acc == "teacher":
             teacher = Teacher.objects.get(id=id_per)
+            tt = True
         else:
             return redirect('/')
     if request.method == 'POST':
@@ -284,15 +358,16 @@ def addproject(request):
             print("Error")
     else:
         form = AddProject()
-    return render(request, 'base/newproject.html', {'form': form,'account': teacher})
+    return render(request, 'base/newproject.html', {'form': form,'account': teacher, 'type': tt})
 
 
 def addaccount(request):
     if "id" in request.session:
         id_per = int(request.session['id'])
-        type_acc = int(request.session['type'])
+        type_acc = request.session['type']
         if type_acc == "teacher":
             teacher = Teacher.objects.get(id=id_per)
+            tt =True
         else:
             return redirect('/')
     if request.method == 'POST':
@@ -309,9 +384,16 @@ def addaccount(request):
             print("Error")
     else:
         form = AddAccount()
-    return render(request, 'base/newaccount.html', {'form': form,'account': teacher})
+    return render(request, 'base/newaccount.html', {'form': form,'account': teacher, 'type': tt})
 
 def points_change(request):
+    if "id" in request.session:
+        id_per = int(request.session['id'])
+        type_acc = request.session['type']
+        if type_acc == "teacher":
+            tt = True
+        else:
+            return redirect('/')
     if request.method == 'POST':
         student_id = request.POST.get('student_id', None)
         points = request.POST.get('points', None)

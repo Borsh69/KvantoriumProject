@@ -29,7 +29,7 @@
 					<button style="height: 30px; width: 30px" type="button" id="search_button"><img src="{% static 'img/search.png' %}" style="height: 30px;"  alt=""></button><span id="search_body"><input name="s" type="text" class="field" id="search_field"><input  type="submit" value="Найти" class="submit" id="search_submit"></span>
 				</form>
 				<a class="search_mobile" href=""><img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""></a>
-				{% if account.isTeacher %}
+				{% if type %}
 					<a href="/addproject/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/addproject.svg'%}" alt="" srcset=""></a>
 					<a href="/addaccount/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/addStudent.svg'%}" alt="" srcset=""></a>
 				{% endif %}
