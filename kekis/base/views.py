@@ -6,7 +6,7 @@ from .forms import *
 from django.contrib.auth import authenticate, login
 import string   
 import random 
-
+import re
 
 def home(request):
     if "id" in request.session:
@@ -27,10 +27,15 @@ def projects(request):
         id_per = 2
     account = Account.objects.get(id=id_per)
     p = True
-    s = request.GET.get('s') if request.GET.get('s') != None else ''
-    q = request.GET.get('q') if request.GET.get('q') != None else ''
-    projects = Project.objects.filter(Q(name__iregex=s) | Q(description__iregex=s))
+    s = request.GET.get('s', '')  # Достаточно использовать второй аргумент для значения по умолчанию
+    q = request.GET.get('q', '')
+
+    # Экранирование специальных символов для регулярных выражений
+    s_escaped = re.escape(s)
+
+    projects = Project.objects.filter(Q(name__icontains=s) | Q(description__icontains=s))
     projects = projects.filter(Q(kvantum__icontains=q))
+
     context = {'projects': projects, 'account': account, 'home': p}
     return render(request, 'base/home.html', context)
 
@@ -42,7 +47,7 @@ def buy(request, pk):
     else:
         return redirect('/login/')    
     
-    
+
     account = Account.objects.get(id=id_per)
     shop = Shop.objects.get(id=pk)
     if int(account.rank >= int(shop.price)):
@@ -57,8 +62,8 @@ def buy(request, pk):
     account = Account.objects.get(id=id_per)
     shop = Shop.objects.get(id=pk)
     context = {'key': ran,
-               'shop': shop,
-               'account': account}
+            'shop': shop,
+            'account': account}
     return render(request, 'base/buy.html', context)
 
 
@@ -117,27 +122,41 @@ def account(request, pk):
         
 
 def login(request):
+    ty = False
     if 'id' in request.session:
-        id_per = int(request.session['id'])
-        accountf = Account.objects.get(id=id_per)
-        if accountf.isTeacher == False:
-            return redirect(f'/account/{id_per}/')
-        else:
-            return redirect(f'/teacher/{id_per}/')
+        if 'type_acc' in request.session:
+            type_acc = request.session['type']
+            if type_acc=='pupil':   
+                id_per = int(request.session['id'])
+                return redirect(f'/account/{id_per}/')
+            else:
+                id_per = int(request.session['id'])
+                return redirect(f'/teacher/{id_per}/')
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
             try:
                 usr_account = Account.objects.get(login=cd["login"])
+                ty = False
             except Account.DoesNotExist:
-                print("Error")
-                return redirect('/login/')
+                print("Error Account")
+                try: 
+                    usr_account = Teacher.objects.get(login=cd["login"])
+                    ty = True
+                except Teacher.DoesNotExist:
+                    return redirect('/login/')
             if(usr_account.password == cd["password"]):
                 id_usr = int(usr_account.id)
                 request.session.set_expiry(24*3600)
                 request.session['id'] = id_usr
-                response = redirect(f'/account/{id_usr}/')
+                print(ty)
+                if ty:
+                    request.session['type'] = "teacher"
+                    response = redirect(f'/teacher/{id_usr}/')
+                else:
+                    request.session['type'] = "pupil"
+                    response = redirect(f'/account/{id_usr}/')
                 return response
             else:
                 print("Error")
@@ -179,15 +198,27 @@ def competitions(request):
         id_per = int(request.session['id'])
     else:
         id_per = 2
-    q = request.GET.get('q') if request.GET.get('q') != None else ''
-    s = request.GET.get('s') if request.GET.get('s') != None else ''
-    competitions = Competitions.objects.filter(Q(name__iregex=q) | Q(description__iregex=q) | Q(kvantum__icontains=q))
-    competitions = competitions.filter(Q(name__iregex=s))
+
+    q = request.GET.get('q', '')
+    s = request.GET.get('s', '')
+
+    # Использование icontains для простого поиска без учета регистра
+    competitions = Competitions.objects.filter(
+        Q(name__icontains=q) | 
+        Q(description__icontains=q) | 
+        Q(kvantum__icontains=q)
+    )
+
+    # Если s не пусто, добавляем дополнительный фильтр
+    if s:
+        competitions = competitions.filter(Q(name__icontains=s))
+
     account = Account.objects.get(id=id_per)
     print(request.path)
     p = True
     context = {'competitions': competitions, 'account': account, 'competition': p}
     return render(request, 'base/competitions.html', context)
+
 
 def liked(request):
     if 'id' in request.session:
@@ -219,9 +250,11 @@ def unliked(request):
 def teacher(request, pk):
     if "id" in request.session:
         id_per = int(request.session['id'])
-        account = Account.objects.get(id=id_per)
-        if account.isTeacher == True:
-            context = {'account': account}
+        type_acc = request.session['type']
+        print(type_acc)
+        if type_acc=="teacher":
+            teacher = Teacher.objects.get(id=id_per)
+            context = {'account': teacher}
             return render(request, 'base/teacher.html', context)
         else:
             return redirect(f'/account/{id_per}')
@@ -230,10 +263,12 @@ def teacher(request, pk):
 
 
 def addproject(request):
-    if 'id' in request.session:
+    if "id" in request.session:
         id_per = int(request.session['id'])
-        accountf = Account.objects.get(id=id_per)
-        if accountf.isTeacher == False:
+        type_acc = int(request.session['type'])
+        if type_acc == "teacher":
+            teacher = Teacher.objects.get(id=id_per)
+        else:
             return redirect('/')
     if request.method == 'POST':
         form = AddProject(request.POST, request.FILES)
@@ -249,14 +284,16 @@ def addproject(request):
             print("Error")
     else:
         form = AddProject()
-    return render(request, 'base/newproject.html', {'form': form,'account': accountf})
+    return render(request, 'base/newproject.html', {'form': form,'account': teacher})
 
 
 def addaccount(request):
-    if 'id' in request.session:
+    if "id" in request.session:
         id_per = int(request.session['id'])
-        accountf = Account.objects.get(id=id_per)
-        if accountf.isTeacher == False:
+        type_acc = int(request.session['type'])
+        if type_acc == "teacher":
+            teacher = Teacher.objects.get(id=id_per)
+        else:
             return redirect('/')
     if request.method == 'POST':
         form = AddAccount(request.POST, request.FILES)
@@ -272,7 +309,7 @@ def addaccount(request):
             print("Error")
     else:
         form = AddAccount()
-    return render(request, 'base/newaccount.html', {'form': form,'account': account})
+    return render(request, 'base/newaccount.html', {'form': form,'account': teacher})
 
 def points_change(request):
     if request.method == 'POST':

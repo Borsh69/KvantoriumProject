@@ -18,4 +18,5 @@ urlpatterns = [
     path('addproject/', views.addproject, name="add"),
     path('addaccount/', views.addaccount, name="addaccount"),
     path('points_change/', views.points_change, name="points_change"),
+
 ]

@@ -34,14 +34,7 @@ class Timetable(models.Model):
     def __str__(self) -> str:
         return self.classroom + ' ' + str(self.time)
 
-class Group(models.Model):
-    name = models.CharField(max_length=60)
-    direction = models.TextChoices('kvantumType',
-                                     'VR IT MEDIA IND-DESIGN ENERGY BIO NEURO NANO HI-TECH GEO AERO IND-ROBO')
-    #Сделать лидера квантума, убрать тичера из аккаунта.!
-    timetable = models.ManyToManyField(Timetable, verbose_name="Дни учёбы")
-    def __str__(self) -> str:
-        return self.name
+
 
 class Competitions(models.Model):
     kvantumType = models.TextChoices('kvantumType',
@@ -54,6 +47,7 @@ class Competitions(models.Model):
     images = models.ManyToManyField("Image", null=True, blank=True, verbose_name="Дополнительные изображения")
     contacts = models.CharField(max_length=250, verbose_name="Ссылка на конкурс")
     date = models.DateTimeField(auto_now=False, auto_now_add=False, default=None)
+    current = models.BooleanField(default=True, verbose_name="Активный")
     def __str__(self) -> str:
         return self.name
 
@@ -69,10 +63,9 @@ class Account(models.Model):
     login = models.CharField(max_length=40)
     password = models.CharField(max_length=40)
     score = models.IntegerField(default=0)
-    isTeacher = models.BooleanField(default=False)
     size = models.CharField(max_length=10)
-    group = models.ManyToManyField(Group, blank=True, null=True)
     projects = models.ManyToManyField(Project, null=True, blank=True)
+    city = models.CharField(max_length=255, default="none")
     favorite = models.ManyToManyField(Competitions, null=True, blank=True)
 
     def __str__(self) -> str:
@@ -81,11 +74,27 @@ class Account(models.Model):
     class Meta:
         unique_together = ('email', 'login', 'password', 'age', 'name')
 
+class Teacher(models.Model):
+    name = models.CharField(max_length=80)
+    photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
+    age = models.IntegerField()
+    email = models.EmailField(max_length=200)
+    time_created = models.DateTimeField(auto_now_add=True)
+    login = models.CharField(max_length=40)
+    password = models.CharField(max_length=40)
+    size = models.CharField(max_length=10)
+    favorite = models.ManyToManyField(Competitions, null=True, blank=True)
+    city = models.CharField(max_length=255, default="none")
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        unique_together = ('email', 'login', 'password', 'age', 'name')
 
 class Buy(models.Model):
     key = models.CharField(max_length=11)
     name = models.CharField(max_length=80)
-    size = models.CharField(max_length=11)
+    size = models.CharField(max_length=11, default="M")
     type = models.CharField(max_length=30)
 
     def __str__(self):
@@ -101,7 +110,16 @@ class Image(models.Model):
 
 
 
-
+class Group(models.Model):
+    name = models.CharField(max_length=60)
+    direction = models.TextChoices('kvantumType',
+                                     'VR IT MEDIA IND-DESIGN ENERGY BIO NEURO NANO HI-TECH GEO AERO IND-ROBO')
+    #Сделать лидера квантума, убрать тичера из аккаунта.!
+    timetable = models.ManyToManyField(Timetable, verbose_name="Дни учёбы")
+    pupils = models.ManyToManyField(Account, blank=True, null=True)
+    teachers = models.ForeignKey(Teacher, blank=True, null=True, on_delete=models.SET_NULL)
+    def __str__(self) -> str:
+        return self.name
 
 
 

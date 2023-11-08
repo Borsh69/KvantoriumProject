@@ -11,6 +11,7 @@ class ProjectAdmin(admin.ModelAdmin):
     ]
 
 admin.site.register(Image)
+admin.site.register(Teacher)
 admin.site.register(Project)
 admin.site.register(Account)
 admin.site.register(Shop)
