@@ -127,14 +127,14 @@ def account(request, pk):
     if d in str(request.path):
         account = Account.objects.get(id=pk)
         account_ws = Account.objects.all()
+        group = Group.objects.all()
+        group = account.group_set.all()
         score = 0
         id_num = []
         rank_num = []
-        for i in range(account_ws.count()):
-            i += 1
-            p = Account.objects.get(id=i)
-            id_num.append(p.id)
-            rank_num.append(p.rank)
+        for i in account_ws:
+            id_num.append(i.id)
+            rank_num.append(i.rank)
         slovar_id_rank = dict(zip(id_num, rank_num))
         
         sorted_dict = {}
@@ -149,7 +149,7 @@ def account(request, pk):
             a +=1
 
 
-        context = {'account': account, 'type': tt}
+        context = {'account': account, 'type': tt, 'group': group}
         return render(request, 'base/account.html', context)
 
     else:
