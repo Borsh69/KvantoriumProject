@@ -109,9 +109,8 @@
 .account-info__logo {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-    width: calc(var(--index) * 8);
+
 }
 .account-info__logo div {
 	height: 100%;
@@ -120,7 +119,9 @@
 }
 .account-info__avatar {
 	box-shadow: 0 0 0 2px rgb(0, 0, 0);
-    width: calc(var(--index) * 10);
+    width: calc(var(--index) * 12);
+	max-width: 300px;
+	border-radius: 10px;
 }
 .teacherdiv{
 	margin-bottom: 7px;
@@ -144,13 +145,13 @@
 }
 .account-info__email {
 	margin-top: 7px;
-	font-size: 30px;
+	font-size: 26px;
 }
 .account_underImg_info {
 	background: none;
 }
 .account-info__email span{
-	font-size: 30px;
+	font-size: 26px;
 }
 .account-info__social-credits {
 	text-align: center;
@@ -196,6 +197,7 @@
 	border-radius: 15px;
 	padding: 10px;
 	margin: 3px;
+	max-width: 200px;
 }
 .account-timetable__office {
 	font-size: 17px;
@@ -386,20 +388,41 @@
 	bottom: 10px;
 	left: 10px;
 	background: none;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
 }
 
-.h2Date {
+.main-block__adinf__Date {
 	display: block;
 	font-family: 'RobotoBold';
 	position: relative;
-	margin: 10px auto auto auto;
+	margin: 10px auto auto 0px;
+	background-color: chartreuse;
+	width: 120%;
+	border-radius: 5px;
+	text-align: center;
 }
-
-.h2Kvantum{
+.main-block__adinf__Time {
 	display: block;
 	font-family: 'RobotoBold';
 	position: relative;
-	margin: 10px auto auto auto;
+	margin: 10px auto auto 0px;
+	background-color: chartreuse;
+	width: 70%;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.main-block__adinf__Kvantum{
+	display: block;
+	font-family: 'RobotoBold';
+	position: relative;
+	margin: 10px auto auto 0px;
+	background-color: chartreuse;
+	width: 80%;
+	border-radius: 5px;
+	text-align: center;
 
 }
 
@@ -453,13 +476,29 @@
 .students-list {
 	display: flex;
 	flex-wrap: wrap;
+	animation-duration: 1.1s;
+  	animation-fill-mode: both;
+  	animation-name: fadeOut;
+  	opacity: 1;
+  	transform: translateY(0px);
 }
-
+/*useful animations memes*/
+/*
+	animation-duration: 1.1s;
+  	animation-fill-mode: both;
+  	animation-name: fadeOut;
+  	opacity: 1;
+  	transform: translateY(0px);
+*/
 .students-list__title {
 	margin-top: 20px;
 	font-size: 26pt;
 	margin-bottom: 20px;
-
+  	animation-duration: 1.1s;
+  	animation-fill-mode: both;
+  	animation-name: fadeOut;
+  	opacity: 1;
+  	transform: translateY(0px);
 }
 .student-name{
 	width: 100px;
@@ -591,7 +630,9 @@
 	}
 
 	/* Account page */
-
+	.account-info {
+		flex-direction: column;
+	}
 	.account-info__name {
 		font-size: 20px;
 	}
@@ -606,6 +647,10 @@
 	.account-info__email {
 		word-break: break-all;
 		font-size: 16px;
+	}
+	.account-info__avatar {
+		box-shadow: 0 0 0 2px rgb(0, 0, 0);
+		width: calc(var(--index) * 16);
 	}
 }
 @media (max-width: 425px){

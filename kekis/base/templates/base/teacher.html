@@ -8,8 +8,6 @@
     <div class="account-info">
         <div class="account-info__logo">
             <img class="account-info__avatar" src="{{account.photo.url}}" alt="" srcset="">
-            <div style="background: none;">
-            </div>
         </div>
         <div class="account-info__info">
             <div class="account-info__name">{{account.name}}</div>
@@ -42,7 +40,7 @@
     </div></div>
         {% csrf_token %}
         {% for onegroup in group %}
-        <div class="students-list__title">Студенты группы: {{onegroup.name}}</div>
+        <div class="students-list__title">Учащиеся группы: {{onegroup.name}}</div>
             <div class="students-list">
             {% for student in onegroup.pupils.all %}
                 {% if student.name != account.name %}
