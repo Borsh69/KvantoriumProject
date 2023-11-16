@@ -64,7 +64,7 @@ popupToggle.onclick = function(){
     while (switching) {
       //start by saying: no switching is done:
       switching = false;
-      b = list.getElementsByTagName("div");
+      b = list.getElementsByClassName("main_block");
       //Loop through all list-items:
       for (i = 0; i < (b.length - 1); i++) {
         //start by saying there should be no switching:
@@ -96,7 +96,7 @@ popupToggle.onclick = function(){
     while (switching) {
       //start by saying: no switching is done:
       switching = false;
-      b = list.getElementsByTagName("div");
+      b = list.getElementsByClassName("main_block");
       //Loop through all list-items:
       for (i = 0; i < (b.length - 1); i++) {
         //start by saying there should be no switching:
