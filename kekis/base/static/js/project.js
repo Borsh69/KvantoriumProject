@@ -156,11 +156,11 @@ function Sim(sldrId) {
   };
   
   Sim.prototype.dotOn = function(num) {
-    this.indicatorDotsAll[num].style.cssText = 'background-color:#556; cursor:pointer;'
+    this.indicatorDotsAll[num].style.cssText = 'background-color:#BBB; cursor:pointer;'
   };
   
   Sim.prototype.dotOff = function(num) {
-    this.indicatorDotsAll[num].style.cssText = 'background-color:#BBB; cursor:default;'
+    this.indicatorDotsAll[num].style.cssText = 'background-color:#556; cursor:default;'
   };
   
   Sim.initialize = function(that) {
