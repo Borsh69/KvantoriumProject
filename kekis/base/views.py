@@ -397,7 +397,15 @@ def points_change(request):
     if request.method == 'POST':
         student_id = request.POST.get('student_id', None)
         points = request.POST.get('points', None)
+        name = request.POST.get('name', None)
+        email = request.POST.get('email', None)
+        login = request.POST.get('login', None)
+        password = request.POST.get('password', None)
         account = Account.objects.get(id=student_id)
         account.rank = points
+        account.name = name
+        account.email = email
+        account.login = login
+        account.password = password
         account.save()
         return HttpResponse("<h1>Nice!</h1>")

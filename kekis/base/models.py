@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-
+from django.core.validators import FileExtensionValidator
 
 class Project(models.Model):
     kvantumType = models.TextChoices('kvantumType',
@@ -11,6 +11,7 @@ class Project(models.Model):
     description = models.TextField(verbose_name="Описание проекта")
     image = models.ManyToManyField("Image", null=True, blank=True, verbose_name="Дополнительные изображения")
     creators = models.ManyToManyField("Account", verbose_name="Создатели проектов")
+    PDFdescription = models.FileField(upload_to ='pdf/', validators =[FileExtensionValidator(allowed_extensions=['pdf'])], null=True, blank=True) 
 
     def __str__(self) -> str:
         return self.name
@@ -63,6 +64,7 @@ class Account(models.Model):
     login = models.CharField(max_length=40)
     password = models.CharField(max_length=40)
     score = models.IntegerField(default=0)
+    contact = models.CharField(max_length=80, null=True)
     size = models.CharField(max_length=10)
     projects = models.ManyToManyField(Project, null=True, blank=True)
     city = models.CharField(max_length=255, default="none")
