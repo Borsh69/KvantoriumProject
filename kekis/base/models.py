@@ -1,6 +1,10 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
-
+from PIL import Image as PILImage
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 class Project(models.Model):
     kvantumType = models.TextChoices('kvantumType',
@@ -11,6 +15,8 @@ class Project(models.Model):
     description = models.TextField(verbose_name="Описание проекта")
     image = models.ManyToManyField("Image", null=True, blank=True, verbose_name="Дополнительные изображения")
     creators = models.ManyToManyField("Account", verbose_name="Создатели проектов")
+    addition = models.FileField(upload_to="files/", verbose_name="Addition", blank=True)
+
 
     def __str__(self) -> str:
         return self.name
@@ -122,6 +128,22 @@ class Group(models.Model):
         return self.name
 
 
+
+
+@receiver(pre_save, sender=Project)
+def resize(sender,instance, **kwargs):
+    if(instance.face):
+        face = PILImage.open(instance.face)
+        width,height = face.size
+        new_width,new_height = 800, 600
+        left = (width-new_width)/2
+        right = (width+new_width)/2
+        top = (height-new_height)/2
+        bottom = (height+new_height)/2
+        face = face.crop((left,top,right,bottom))
+        thumb_io = BytesIO()
+        face.save(thumb_io, format='PNG')
+        instance.face.save(instance.face.name, InMemoryUploadedFile(thumb_io, None, f'{instance.face.name}', 'face', thumb_io.tell(), None), save=False)
 
 
 
