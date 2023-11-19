@@ -7,18 +7,7 @@
 {% block filters %}{% endblock filters %}
 {% block content %}
 <div class="infoblock project" style="justify-content: left;">
-    <div class="sim-slider">
-        <ul class="sim-slider-list">
-            <li class="block"></li>
-                <li class="sim-slider-element"><img src="{{project.face.url}}" alt="{{project.face.id}}"></li>
-            {% for image in project.image.all %}
-                <li class="sim-slider-element"><img src="{{image.image.url}}" alt="{{project.image.id}}"></li>
-            {% endfor %}
-        </ul>
-        <div class="sim-slider-arrow-left"></div>
-        <div class="sim-slider-arrow-right"></div>
-        <div class="sim-slider-dots"></div>
-    </div>
+    <img class="project_image" src="{{project.face.url}}"></img>
     <div class="infodiv">
         <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Описание:</p>
         <p style="font-family: 'RobotoMedium'; font-size: 16pt;" class="project-p">{{project.description}}</p>

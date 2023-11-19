@@ -650,7 +650,7 @@ footer > a{
 }
 .infodiv{
 	padding-top: 20px;
-	width: 50%;
+	width: 90%;
 }
 .sim-slider-element > img {
     opacity: 1;
@@ -805,6 +805,12 @@ span.sim-dot {
 		max-width: 95%;
 		max-height: calc(100% - 20px);
 	}
+	.project_image{
+		min-width: 310px !important;
+		min-height: 150px !important;
+		margin: 10px 10px 0px 10px !important;
+		justify-self: center !important;
+	}
 }
 @media (max-width: 425px){
 	.container{
@@ -816,3 +822,12 @@ span.sim-dot {
 
 }
 
+/* PROJECT STYLE */
+.project_image {
+	width: 32%;
+	height: 20%;
+	min-width: 400px;
+	min-height: 300px;
+	margin: 20px 30px 10px 10px;
+	border-radius: 10px;
+}
