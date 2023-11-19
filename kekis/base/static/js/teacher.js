@@ -37,13 +37,28 @@ function getCSRFToken() {
 
 function pointsChange(id){
   const csrftoken = getCSRFToken();
-  let inputField = document.getElementById(id);
+  const id_point = id.toString() + "_point";
+  const id_name = id.toString() + "_name";
+  const id_email = id.toString() + "_email";
+  const id_login = id.toString() + "_login";
+  const id_pass = id.toString() + "_pass"; 
+  let emailField = document.getElementById(id_email);
+  let loginField = document.getElementById(id_login);
+  let nameField = document.getElementById(id_name);
+  let passField = document.getElementById(id_pass);
+  let pointField = document.getElementById(id_point);
+
   $.ajax({
     type: "POST",
     url: "/points_change/",
     data: {
       'student_id': id,
-      'points': inputField.value
+      'points': pointField.value,
+      'name': nameField.value,
+      'email': emailField.value,
+      'login': loginField.value,
+      'password': passField.value
+
     },
     beforeSend: function(xhr) {
       xhr.setRequestHeader("X-CSRFToken", csrftoken);
