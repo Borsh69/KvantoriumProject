@@ -26,7 +26,35 @@ def home(request):
     context = {'account': account, 'type': tt}
     return render(request, 'base/welcome.html', context)
 
+def projects_pricol(request, pk):
+    if "id" in request.session:
+        id_per = int(request.session['id'])
 
+        type_acc = request.session['type']
+        if type_acc=="teacher":
+            tt = True
+            account = Teacher.objects.get(id=id_per)
+        else:
+            tt = False
+            account = Account.objects.get(id=id_per)
+    else:
+        id_per = 2
+        tt = False
+        account = Account.objects.get(id=id_per)
+    p = True
+    s = request.GET.get('s', '')  # Достаточно использовать второй аргумент для значения по умолчанию
+    q = request.GET.get('q', '')
+
+    # Экранирование специальных символов для регулярных выражений
+    s_escaped = re.escape(s)
+    creator = Account.objects.get(login=pk)
+    projectsf = creator.project_set.all()
+    print(projectsf)
+    projects = projectsf.filter(Q(name__icontains=s) | Q(description__icontains=s))
+    projects = projects.filter(Q(kvantum__icontains=q))
+    name = creator.name
+    context = {'projects': projects, 'account': account, 'home': p, 'type': tt, "name": name}
+    return render(request, 'base/home.html', context)
 
 
 def projects(request):
