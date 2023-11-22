@@ -75,14 +75,14 @@ def projects(request):
     p = True
     s = request.GET.get('s', '')  # Достаточно использовать второй аргумент для значения по умолчанию
     q = request.GET.get('q', '')
-
+    name = "Проекты"
     # Экранирование специальных символов для регулярных выражений
     s_escaped = re.escape(s)
 
     projects = Project.objects.filter(Q(name__icontains=s) | Q(description__icontains=s))
     projects = projects.filter(Q(kvantum__icontains=q))
 
-    context = {'projects': projects, 'account': account, 'home': p, 'type': tt}
+    context = {'projects': projects, 'account': account, 'home': p, 'type': tt, "name": name}
     return render(request, 'base/home.html', context)
 
 

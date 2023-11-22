@@ -1,10 +1,12 @@
 {% extends 'main.html' %}
-
-{% load static %}
 {% if name %}
-{% block title %}Проекты ученика "{{name}}"{% endblock title %}
+{% block title %}{{name}}{% endblock title %}
+{% else %}
+
 {% endif %}
 {% block content %}
+{% load static %}
+
 
 <div class="infoblock" id="id01">
     {% for project in projects %}

@@ -17,7 +17,7 @@ class Project(models.Model):
     image = models.ManyToManyField("Image", null=True, blank=True, verbose_name="Дополнительные изображения")
     creators = models.ManyToManyField("Account", verbose_name="Создатели проектов")
     PDFdescription = models.FileField(upload_to ='pdf/', validators =[FileExtensionValidator(allowed_extensions=['pdf'])], null=True, blank=True) 
-
+    contact = models.CharField(max_length=200, verbose_name="Контакты", null=True)
     def __str__(self) -> str:
         return self.name
 
