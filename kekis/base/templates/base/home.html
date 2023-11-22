@@ -1,8 +1,9 @@
 {% extends 'main.html' %}
 
 {% load static %}
-
-
+{% if name %}
+{% block title %}Проекты ученика "{{name}}"{% endblock title %}
+{% endif %}
 {% block content %}
 
 <div class="infoblock" id="id01">
