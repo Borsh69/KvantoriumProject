@@ -45,19 +45,26 @@
             {% for student in onegroup.pupils.all %}
                 {% if student.name != account.name %}
                     <div class="student-block">
-                        <h2 class="studentname">{{student.name}}</h2>
-                        <img class="student-photo" src="{{student.photo.url}}" alt="" srcset="">
-                        <p>Очки учащегося:</p>
-                        <input id="{{student.id}}_point" class="student-score__input" type="text" value={{student.rank}}></input><br>
-                        <p>Имя учащегося:</p>
-                        <input id="{{student.id}}_name" class="student-score__input" type="text" value={{student.name}}></input><br>
-                        <p>Почта учащегося:</p>
-                        <input id="{{student.id}}_email" class="student-score__input" type="text" value={{student.email}}></input><br>
-                        <p>Логин учащегося:</p>
-                        <input id="{{student.id}}_login" class="student-score__input" type="text" value={{student.login}}></input><br>
-                        <p>Пароль учащегося:</p>
-                        <input id="{{student.id}}_pass" class="student-score__input" type="text" value={{student.password}}></input><br>
-                        <button class="student-score__button" onClick="pointsChange({{student.id}});">Сохранить</button>
+                        <div class="student-header">
+                            <img class="student-photo" src="{{student.photo.url}}" alt="" srcset="">
+                            <h2 class="student-name">{{student.name}}</h2>
+                        </div>
+                        <div class="student-info">
+                            <p class="student-info-text">Очки учащегося:</p>
+                            <input id="{{student.id}}_point" class="student-score__input" type="text" value={{student.rank}}></input>
+                            <p class="student-info-text">Имя учащегося:</p>
+                            <input id="{{student.id}}_name" class="student-score__input" type="text" value={{student.name}}></input>
+                            <p class="student-info-text">Почта учащегося:</p>
+                            <input id="{{student.id}}_email" class="student-score__input" type="text" value={{student.email}}></input>
+                            <p class="student-info-text">Логин учащегося:</p>
+                            <input id="{{student.id}}_login" class="student-score__input" type="text" value={{student.login}}></input>
+                            <p class="student-info-text">Пароль учащегося:</p>
+                            <input id="{{student.id}}_pass" class="student-score__input" type="text" value={{student.password}}></input>
+                            <div class="student-save_section">
+                                <button class="student-score__button" onClick="pointsChange({{student.id}});">Сохранить</button>
+                                <div class="student-save_message" hidden id="{{student.id}}_success">Успешно сохранено!</div>
+                            </div> 
+                        </div>
                     </div>
                 {% endif %}
             {% endfor %}

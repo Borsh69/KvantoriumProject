@@ -42,6 +42,7 @@ function pointsChange(id){
   const id_email = id.toString() + "_email";
   const id_login = id.toString() + "_login";
   const id_pass = id.toString() + "_pass"; 
+  const id_success = id.toString() + "_success";
   let emailField = document.getElementById(id_email);
   let loginField = document.getElementById(id_login);
   let nameField = document.getElementById(id_name);
@@ -65,6 +66,9 @@ function pointsChange(id){
     },
     success: function(data) {
       console.log(data);
+      let success_el = document.getElementById(id_success);
+      success_el.hidden = false;
+      setTimeout(() => {  success_el.hidden = true; }, 2000);
     }
   });
 }
