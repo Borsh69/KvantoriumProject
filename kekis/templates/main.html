@@ -24,25 +24,29 @@
 	<div class="container">
 		<header>
 			<a href="{% url 'home' %}"><img src="{% static 'img/logo.svg' %}" class="logo"></a>
-			<div class="header__buttons">
-				<form {% if competition %} action="{% url 'competitions' %}" {%else%} action="{% url 'projects' %}" {% endif %}method="get" class="search" id="search">
-					<button style="height: 30px; width: 30px" type="button" id="search_button"><img src="{% static 'img/search.png' %}" style="height: 30px;"  alt=""></button><span id="search_body"><input name="s" type="text" class="field" id="search_field"><input  type="submit" value="Найти" class="submit" id="search_submit"></span>
-				</form>
-				<a class="search_mobile" href=""><img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""></a>
-				{% if type %}
-					<a href="/addproject/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/addproject.svg'%}" alt="" srcset=""></a>
-					<a href="/addaccount/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/addStudent.svg'%}" alt="" srcset=""></a>
-				{% endif %}
-				<a href="/projects/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/projects.svg'%}" alt="" srcset=""></a>
-				<a href="/shop/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/shop_icon.png'%}" alt="" srcset=""></a>
-				<a href="/competitions/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/competitions.svg'%}" alt="" srcset=""></a>
-				<a href="/login/">
-					{% if account.photo.url %}
-						<img class="account-info__avatar" style="width: 40px; height: 40px; " src="{{account.photo.url}}" alt="" srcset="">
-				  	{% else %}
-					 	<img class="shop-avatar" style="width: 40px; height: 40px; box-shadow: 0 0 0 2px black;" src="{% static 'img/person.png' %}" alt="" srcset="">
-				  	{% endif %}</a>
-			</div>
+			<i class="navbar_close"></i>
+			<i class="navbar_menu" onclick='menuToggle();'></i>
+			<nav id="navbar" class="go_right">
+				<div class="header__buttons">
+					<form {% if competition %} action="{% url 'competitions' %}" {%else%} action="{% url 'projects' %}" {% endif %}method="get" class="search" id="search">
+						<button style="height: 30px; width: 30px" type="button" id="search_button"><img src="{% static 'img/search.png' %}" style="height: 30px;"  alt=""></button><span id="search_body"><input name="s" type="text" class="field" id="search_field"><input  type="submit" value="Найти" class="submit" id="search_submit"></span>
+					</form>
+					<a class="search_mobile" href=""><img src="{% static 'img/search.png' %}" style="height: 30px;" alt=""></a>
+					{% if type %}
+						<a href="/addproject/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/addproject.svg'%}" alt="" srcset=""></a>
+						<a href="/addaccount/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/addStudent.svg'%}" alt="" srcset=""></a>
+					{% endif %}
+					<a href="/projects/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/projects.svg'%}" alt="" srcset=""></a>
+					<a href="/shop/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/shop_icon.png'%}" alt="" srcset=""></a>
+					<a href="/competitions/"><img class="shop-avatar" style=" width: 40px; height: 40px;" src="{% static 'img/competitions.svg'%}" alt="" srcset=""></a>
+					<a href="/login/">
+						{% if account.photo.url %}
+							<img class="account-info__avatar" style="width: 40px; height: 40px; " src="{{account.photo.url}}" alt="" srcset="">
+						{% else %}
+							<img class="shop-avatar" style="width: 40px; height: 40px; box-shadow: 0 0 0 2px black;" src="{% static 'img/person.png' %}" alt="" srcset="">
+						{% endif %}</a>
+				</div>
+			</nav>
 			</header>
 		<h1 class="heading" style="font-family: 'RobotoBold';">{% block title %}ПРОЕКТЫ КВАНТОРИАНЦЕВ{% endblock title %}</h1>
 		{% block filters %}
@@ -138,5 +142,6 @@
 		{% endblock content %}
 		{% include 'footer.html' %}
 	</div>
-	{% block script %}<script src="{% static 'js/script.js' %}"></script>{% endblock script %}
+	{% block script %}{% endblock script %}
+	<script src="{% static 'js/service.js' %}"></script>
 </body>
