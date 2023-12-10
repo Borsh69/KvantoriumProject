@@ -504,6 +504,13 @@
 	margin: 5px;
 	font-size: 20pt;
 }
+.student-competitions{
+	margin: 5px;
+	font-size: 14pt;
+}
+.student-competitions-all{
+	margin-left: 5px;
+}
 .student-block {
 	border: #AAAAAA 1px solid;
 	border-radius: 15px;
