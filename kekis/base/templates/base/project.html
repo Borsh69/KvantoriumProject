@@ -6,7 +6,7 @@
 
 {% block filters %}{% endblock filters %}
 {% block content %}
-<div class="infoblock project" style="justify-content: left;">
+<div class="infoblock project project-whole" style="justify-content: left;">
     <div class="project-title">
         <img class="project-title-image" src="{{project.face.url}}"></img>
         <div class="project-description">
@@ -16,28 +16,17 @@
             <div class="project-description-kvantum">
                 Квантум: {{project.kvantum}}
             </div>
-            <button class="project-pdf"style = "margin-left: 10px; background-color: #4898e8; border-radius: 5px;" type="button">
-                <p style="font-family: 'RobotoMedium'; font-size: 16pt; "  class="project-p">
-                    <a href="{{project.PDFdescription.url}}"  target="_blank">Полное описание</a>
+            <button class="project-pdf" type="button">
+                <p class="project-pdf-text">
+                    <a href="{{project.PDFdescription.url}}"  target="_blank">PDF инструкция</a>
                 </p>
             </button>
         </div>
     </div>
     
     <div class="infodiv">
-        <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Направление: {{project.kvantum}}</p>
         <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Описание:</p>
         <p style="font-family: 'RobotoMedium'; font-size: 16pt;" class="project-p">{{project.description}}</p>
-        <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Контакты: </p>
-        <p style="font-family: 'RobotoMedium'; font-size: 19pt;" class="project-p">{{project.contact}}</p>
-
-        <div class="contact">
-            <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Создатели:</p>
-            {% for creator in project.creators.all %}
-                <a href="{% url 'projects_pricol' creator.login %}"><p style="font-family: 'RobotoMedium'; font-size: 16pt;">{{creator.name}}</p></a>
-            {% endfor %}
-        </div>
-        <button style = "margin-left: 10px; background-color: #4898e8; border-radius: 5px;" type="button"><p style="font-family: 'RobotoMedium'; font-size: 16pt; "  class="project-p"><a href="{{project.PDFdescription.url}}"  target="_blank">Полное описание</a></p></button>
     </div>
 </div>
 

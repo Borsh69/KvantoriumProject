@@ -801,6 +801,13 @@
 	.account-info__info {
 		margin: 10px 0 0 0;
 	}
+	.project-title-image {
+		width: 92px !important; 
+		min-width: 92px !important;
+		height: 160px !important;
+		border-radius: 6px !important;
+		object-fit: cover !important;
+	}
 }
 
 
@@ -825,29 +832,46 @@
 	NEW PROJECT STYLE
 */
 
+.project-whole {
+	flex-direction: column;
+}
+
 .project-title {
 	display: flex;
 
 }
 
 .project-title-image {
-	width: 92px;
-    min-width: 92px;
-    height: 160px;
+	width: 400px;
+    
     border-radius: 6px;
 	object-fit: cover;
 }
 
 .project-description {
-	padding: 10px 0px 0px 10px;
+	display: flex;
+	flex-direction: column;
+	padding: 0px 0px 0px 10px;
+	justify-content: space-around;
 	
 }
 
 
 .project-description-title {
-	font-size: 18pt;
+	font-size: 22pt;
 }
 
 .project-description-kvantum {
-	font-size: 14pt;
+	font-size: 16pt;
+}
+
+.project-pdf {
+	background-color: #4898e8; 
+	border-radius: 5px;
+}
+
+.project-pdf-text {
+	font-family: 'RobotoMedium';
+	padding: 5px;
+	font-size: 12pt;
 }
