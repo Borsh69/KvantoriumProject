@@ -597,7 +597,7 @@
 	height: 40px;
 	width: 40px;
 	margin: 15px 0px;
-	right: 40px;
+	right: 0px;
 	z-index: 9999991;
 	display: none;
 }
@@ -625,9 +625,11 @@
 @media (max-width: 768px){
 	.navbar_menu {
 		display: block;
+		position: relative;
+		right: 20px;
 	}
 	#navbar{
-		position: fixed;
+		position: absolute;
 		right: 30px;
 		z-index: 999999;
 		transition: 0.5s;
@@ -641,7 +643,7 @@
 		margin: 5px;
 	}
 	.container{
-		margin: 10px 40px 0 40px;
+		margin: 10px 40px 0 40px; 
 	}
 	.filter{
 		display: block;
