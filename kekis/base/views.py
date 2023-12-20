@@ -135,11 +135,13 @@ def project(request, pk):
         id_per = 2
         account = Account.objects.get(id=id_per)
     project = Project.objects.get(id=pk)
+    coun = project.comments.count()
     images = Image.objects.all()
     context = {'project': project,
                'images': images,
                'account': account, 
-               'type': tt}
+               'type': tt, 
+               'coun': coun}
     return render(request, 'base/project.html', context)
 
 
@@ -157,6 +159,7 @@ def account(request, pk):
         account_ws = Account.objects.all()
         group = Group.objects.all()
         group = account.group_set.all()
+        buys = Buy.objects.get(name=account.name)
         score = 0
         id_num = []
         rank_num = []
@@ -177,7 +180,7 @@ def account(request, pk):
             a +=1
 
 
-        context = {'account': account, 'type': tt, 'group': group}
+        context = {'account': account, 'type': tt, 'group': group, "buy": buys}
         return render(request, 'base/account.html', context)
 
     else:
@@ -437,3 +440,24 @@ def points_change(request):
         account.password = password
         account.save()
         return HttpResponse("<h1>Nice!</h1>")
+
+
+def post_comment(request):
+    user = None
+    if "id" in request.session:
+        user_id = int(request.session['id'])
+        user = Account.objects.get(id=user_id)
+        if request.method == "POST":
+            text = request.POST.get('text', None)
+            index = int(request.POST.get('index', None))
+            tmp = Comment(author=user, text=text,)
+            tmp.save()
+            account = Account.objects.get(id=index)
+            v.comments.add(tmp)
+            print("success!")
+            coun = account.comments.count()
+            usr = account.accounts.all()
+            context = {'artwork': artwork, 'coun': coun, 'usr': usr, 'user':user}
+            return render(request, "artwork_comments.html", context=context)
+    else:
+        return redirect("/login/")

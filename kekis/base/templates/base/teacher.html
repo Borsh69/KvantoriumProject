@@ -47,11 +47,7 @@
                     <div class="student-block">
                         <div class="student-header">
                             <img class="student-photo" src="{{student.photo.url}}" alt="" srcset="">
-                            <div>
-                                <h2 class="student-name">{{student.name}}</h2>
-                                <h4 class="student-competitions">Конкурсы:</h4>
-                                <p class="student-competitions-all">{% for competition in student.favorite.all %} {{competition.name}}; {% endfor %}</p>
-                            </div>
+                            <h2 class="student-name">{{student.name}}</h2>
                         </div>
                         <div class="student-info">
                             <p class="student-info-text">Очки учащегося:</p>

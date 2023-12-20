@@ -9,7 +9,7 @@
 <div class="infoblock project" style="justify-content: left;">
     <img class="project_image" src="{{project.face.url}}"></img>
     <div class="infodiv">
-        <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Направление: {{project.kvantum}}</p>
+        <p style="font-family: 'RobotoBold'; font-size: 20pt; margin-bottom: 10px;" class="project-p">Направление: {{project.kvantum}}</p>
         <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Описание:</p>
         <p style="font-family: 'RobotoMedium'; font-size: 16pt;" class="project-p">{{project.description}}</p>
         <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Контакты: </p>
@@ -21,7 +21,7 @@
                 <a href="{% url 'projects_pricol' creator.login %}"><p style="font-family: 'RobotoMedium'; font-size: 16pt;">{{creator.name}}</p></a>
             {% endfor %}
         </div>
-        <button style = "margin-left: 10px; background-color: #4898e8; border-radius: 5px;" type="button"><p style="font-family: 'RobotoMedium'; font-size: 16pt; "  class="project-p"><a href="{{project.PDFdescription.url}}"  target="_blank">Полное описание</a></p></button>
+        <button style = "margin-top: 10px; background-color: #4898e8; border-radius: 5px;" type="button"><p style="font-family: 'RobotoMedium'; font-size: 16pt; "  class="project-p"><a href="{{project.PDFdescription.url}}"  target="_blank">Полное описание</a></p></button>
     </div>
 </div>
 

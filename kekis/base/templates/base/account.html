@@ -10,7 +10,6 @@
             <img class="account-info__avatar" src="{{account.photo.url}}" alt="" srcset="">
             <div style="background: none;">
                 <p style="font-family: 'RobotoBold';" class="account-info__social-credits"><span style="font-family: 'RobotoBold';">{{account.rank}}</span> КРЕДИТОВ</p>
-                <p class="account-info__score"><a href="/rating/"><img src="{% static 'img/cup.png' %}">{{account.score}} место</a></p>
             </div>
         </div>
         <div class="account-info__info">
@@ -20,7 +19,7 @@
                 <span>Почта:<br>{{account.email}}</span>
             </div>
             <div class="account-info__email">
-                <span>Контактные данные:<br>{{account.email}}</span>
+                <span>Контактные данные:<br>{{account.contact}}</span>
             </div>
         </div>
     

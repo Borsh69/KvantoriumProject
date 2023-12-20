@@ -14,6 +14,7 @@
 	<link href = "{% static 'fonts/stylesheet.css' %}" rel = "stylesheet" type = "text/css" >
 	<!--style-->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/project.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
 	<!--bootstrap-->
 
@@ -25,7 +26,7 @@
 		<header>
 			<a href="{% url 'home' %}"><img src="{% static 'img/logo.svg' %}" class="logo"></a>
 			<i class="navbar_close"></i>
-			<i class="navbar_menu" onclick='menuToggle();'></i>
+			<i class="navbar_menu" onclick='menuToggle();' ></i>
 			<nav id="navbar" class="go_right">
 				<div class="header__buttons">
 					<form {% if competition %} action="{% url 'competitions' %}" {%else%} action="{% url 'projects' %}" {% endif %}method="get" class="search" id="search">
@@ -142,6 +143,8 @@
 		{% endblock content %}
 		{% include 'footer.html' %}
 	</div>
-	{% block script %}{% endblock script %}
+	{% block script %}
+	<script src="{% static 'js/index.global.min.js' %}"></script>
+	{% endblock script %}
 	<script src="{% static 'js/service.js' %}"></script>
 </body>
