@@ -834,6 +834,7 @@
   background-repeat: no-repeat;
 }
 
+<<<<<<< HEAD
 .breadcrumbs:before {
   content: "";
   background-color: rgba(0, 0, 0, 0.6);
@@ -882,3 +883,35 @@
 /*--------------------------------------------------------------
 # страница проекта
 --------------------------------------------------------------*/
+=======
+/* 
+	NEW PROJECT STYLE
+*/
+
+.project-title {
+	display: flex;
+
+}
+
+.project-title-image {
+	width: 92px;
+    min-width: 92px;
+    height: 160px;
+    border-radius: 6px;
+	object-fit: cover;
+}
+
+.project-description {
+	padding: 10px 0px 0px 10px;
+	
+}
+
+
+.project-description-title {
+	font-size: 18pt;
+}
+
+.project-description-kvantum {
+	font-size: 14pt;
+}
+>>>>>>> e92a47a5971a953f1c364116b680ebf516ef6100
