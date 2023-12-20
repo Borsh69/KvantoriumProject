@@ -1,0 +1,14 @@
+<h4 class="comments-count">{{coun}} Comments</h4>
+              {% for i in project.comments.all %}
+              <div id="comment-1" class="comment">
+                <div class="d-flex">
+                  <div class="comment-img"><img src="{{i.author.photo.url}}" alt=""></div>
+                  <div>
+                    <time datetime="2020-01-01">{{i.date}}</time>
+                    <p>
+                    {{i.text}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}

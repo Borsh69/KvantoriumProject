@@ -1,0 +1,81 @@
+{% extends 'mainproj.html' %}
+{% block title %}{% endblock title %}
+{% block filters %}{% endblock filters %}
+{% load static %}<!-- End Header -->
+{% block content %}
+
+
+
+  <main id="main">
+
+
+    <!-- ======= Blog Details Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-5 artwork_main">
+
+          <div class="col-lg-8" style="margin-top: 70px;">
+
+            <article class="blog-details">
+
+              <div class="post-img">
+                <img src="{{project.face.url}}" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title">{{project.name}}</h2>
+
+
+              <div class="content">
+                <h5>Направление {{project.kvantum}}</h5>
+                <p style="font-size: 20px;">
+                  {{project.description}}  
+                </p>
+              </div><!-- End post content -->
+
+          
+              <a href="{{project.PDFdescription.url}}"  target="_blank"><button class="btn btn-primary"> Полное описание</button></a>
+            </article>
+            <!-- End blog post -->
+            {% for i in project.creators.all %}
+            <div class="blog-details post-author d-flex align-items-center">
+              <img src="{{i.photo.url}}" class="rounded-circle flex-shrink-0" alt="">
+              <div>
+                <h4>{{i.name}}</h4>
+              </div>
+            </div><!-- End post author -->
+            {% endfor %}
+            <div class="comments blog-details">
+              <div id="commentSection">
+              
+              </div>
+
+              <div class="reply-form">
+                {% csrf_token %}
+                  <textarea name="comment" class="form-control" placeholder="Ваш комментарий" id="commentArea" style="margin-bottom:10px;"></textarea>
+                  <button onclick="sendComment({{project.id}});" class="btn btn-primary">Оставить комментарий</button>
+                </form>
+
+              </div>
+
+            </div><!-- End blog comments -->
+
+          </div>
+
+
+              
+
+            </div><!-- End Blog Sidebar -->
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Blog Details Section -->
+
+  </main><!-- End #main -->
+
+
+  {% endblock content %}
+
+
