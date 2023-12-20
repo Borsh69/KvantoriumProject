@@ -2,12 +2,28 @@
 
 {% load static %}
 
-{% block title %}{{project.name}}{% endblock title %}
+{% block title %}{% endblock title %}
 
 {% block filters %}{% endblock filters %}
 {% block content %}
 <div class="infoblock project" style="justify-content: left;">
-    <img class="project_image" src="{{project.face.url}}"></img>
+    <div class="project-title">
+        <img class="project-title-image" src="{{project.face.url}}"></img>
+        <div class="project-description">
+            <div class="project-description-title">
+                {{project.name}}
+            </div>
+            <div class="project-description-kvantum">
+                Квантум: {{project.kvantum}}
+            </div>
+            <button class="project-pdf"style = "margin-left: 10px; background-color: #4898e8; border-radius: 5px;" type="button">
+                <p style="font-family: 'RobotoMedium'; font-size: 16pt; "  class="project-p">
+                    <a href="{{project.PDFdescription.url}}"  target="_blank">Полное описание</a>
+                </p>
+            </button>
+        </div>
+    </div>
+    
     <div class="infodiv">
         <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Направление: {{project.kvantum}}</p>
         <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Описание:</p>
