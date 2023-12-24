@@ -546,10 +546,12 @@
 	font-size: 16pt;
 	padding: 0px 10px;
 }
+
+/*****
 .student-block > p {
 	
 }
-
+*****/
 .student-photo {
 	width: 90%;
 	height: 90%;
