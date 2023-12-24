@@ -7,6 +7,14 @@ from PIL import Image as PILImage
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
+
+
+
+class Comment(models.Model):
+    author = models.ForeignKey("Account", on_delete=models.CASCADE)
+    text = models.CharField(max_length=200)
+    date = models.DateField(auto_now_add=True, blank=True)
+
 class Project(models.Model):
     kvantumType = models.TextChoices('kvantumType',
                                      'VR IT MEDIA IND-DESIGN ENERGY BIO NEURO NANO HI-TECH GEO AERO IND-ROBO')
@@ -16,11 +24,11 @@ class Project(models.Model):
     description = models.TextField(verbose_name="Описание проекта")
     image = models.ManyToManyField("Image", null=True, blank=True, verbose_name="Дополнительные изображения")
     creators = models.ManyToManyField("Account", verbose_name="Создатели проектов")
+    comments = models.ManyToManyField(Comment, blank=True)
     PDFdescription = models.FileField(upload_to ='pdf/', validators =[FileExtensionValidator(allowed_extensions=['pdf'])], null=True, blank=True) 
     contact = models.CharField(max_length=200, verbose_name="Контакты", null=True)
     def __str__(self) -> str:
         return self.name
-
 
 class Shop(models.Model):
     title = models.CharField(max_length=40)

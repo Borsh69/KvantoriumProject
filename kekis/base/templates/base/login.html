@@ -8,11 +8,11 @@
             <form action="{% url 'login'%}" class="registration-cssave__form" method = "post">
                 {% csrf_token %}
                 <div class = "form-group"><p>
-                    <label class = "form-label" for="{{ form.login.id_for_label}}">{{form.login.label}}:  </label>
+                    <label class = "form-label" for="{{ form.login.id_for_label}}">Логин:  </label>
                     {{form.login}}</p>
                 </div>
                 <div class = "form-error">{{form.login.errors}}</div>
-                <div class = "form-group"><p><label class = "form-label" for="{{ form.password.id_for_label}}">{{form.password.label}}:  </label>{{form.password}}</p></div>
+                <div class = "form-group"><p><label class = "form-label" for="{{ form.password.id_for_label}}">Пароль:  </label>{{form.password}}</p></div>
                 <div class = "form-error">{{form.login.errors}}</div>
                 <div class = "field_button">
                     <button class="login_button">Войти</button>

@@ -1,4 +1,3 @@
-@import url('http://fonts.cdnfonts.com/css/bankgothic-russ');
 @-webkit-keyframes fadeOut {
 	0% {
 		opacity: 0;
@@ -44,8 +43,7 @@ button {
 }
 *{
 	color: rgb(0, 0, 0);
-	font-family: 'BankGothic RUSS';
-    font-weight: 500;
+	font-family: 'RobotoMedium';
     font-style: normal;
 	padding: 0;
 	margin: 0;
@@ -118,6 +116,7 @@ header{
 }
 .header__buttons * {
 	margin-left: calc(var(--index) * 1);
+	border-radius: 7px;
 }
 .heading{
 	background-color: rgba(0, 0, 0, 0);
@@ -565,7 +564,6 @@ footer{
 }
 span{
 	background-color: #00000000;
-  	font-weight: bold;
 	font-size: 98%;
 	font-style: bold;
 }
