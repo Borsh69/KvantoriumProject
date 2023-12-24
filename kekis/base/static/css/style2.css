@@ -901,12 +901,12 @@
 
 .project-title {
 	display: flex;
-
+	flex-direction: row;
+	align-items: center;
 }
 
 .project-title-image {
-	width: 400px;
-    
+	width: 500px;
     border-radius: 6px;
 	object-fit: cover;
 }
@@ -914,9 +914,9 @@
 .project-description {
 	display: flex;
 	flex-direction: column;
-	padding: 0px 0px 0px 10px;
+	margin-left: 10px;
 	justify-content: space-around;
-	
+	height: 140px;
 }
 
 
@@ -931,10 +931,45 @@
 .project-pdf {
 	background-color: #4898e8; 
 	border-radius: 5px;
+	width: 200px;
 }
 
 .project-pdf-text {
 	font-family: 'RobotoMedium';
 	padding: 5px;
 	font-size: 12pt;
+}
+.projects-creators {
+	margin-top: 40px;
+}
+
+.project-p-creators {
+	margin-bottom: 10px;
+}
+.creators-list {
+	display: flex;
+}
+.creator-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
+.creator-avatar {
+	width: 76px;
+	height: 76px;
+	border-radius: 50%;
+}
+.creator-name {
+	margin-top: 10px;
+	text-align: center;
+}
+
+@media (max-width: 768px) {
+	.project-title-image {
+		width: 120px;
+		height: 200px;
+		border-radius: 6px;
+		object-fit: cover;
+	}
 }

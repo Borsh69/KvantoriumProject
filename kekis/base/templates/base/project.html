@@ -25,24 +25,20 @@
     </div>
     
     <div class="infodiv">
-<<<<<<< HEAD
         <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Описание:</p>
         <p style="font-family: 'RobotoMedium'; font-size: 16pt;" class="project-p">{{project.description}}</p>
-=======
-        <p style="font-family: 'RobotoBold'; font-size: 20pt; margin-bottom: 10px;" class="project-p">Направление: {{project.kvantum}}</p>
-        <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Описание:</p>
-        <p style="font-family: 'RobotoMedium'; font-size: 16pt;" class="project-p">{{project.description}}</p>
-        <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Контакты: </p>
-        <p style="font-family: 'RobotoMedium'; font-size: 19pt;" class="project-p">{{project.contact}}</p>
+    </div>
 
-        <div class="contact">
-            <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p">Создатели:</p>
+    <div class="projects-creators">
+        <p style="font-family: 'RobotoBold'; font-size: 20pt;" class="project-p-creators">Создатели проекта:</p>
+        <div class="creators-list">
             {% for creator in project.creators.all %}
-                <a href="{% url 'projects_pricol' creator.login %}"><p style="font-family: 'RobotoMedium'; font-size: 16pt;">{{creator.name}}</p></a>
+                <div class="creator-block">
+                    <img class="creator-avatar" src="{{creator.photo.url}}"></img>
+                    <div class="creator-name">{{creator.name}}</div>
+                </div> 
             {% endfor %}
         </div>
-        <button style = "margin-top: 10px; background-color: #4898e8; border-radius: 5px;" type="button"><p style="font-family: 'RobotoMedium'; font-size: 16pt; "  class="project-p"><a href="{{project.PDFdescription.url}}"  target="_blank">Полное описание</a></p></button>
->>>>>>> 940d6f9944940ceff4e26e103c424523d23802aa
     </div>
 </div>
 

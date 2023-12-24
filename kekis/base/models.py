@@ -23,7 +23,7 @@ class Project(models.Model):
     face = models.ImageField(upload_to='images/', verbose_name="Лицевое изображение")
     description = models.TextField(verbose_name="Описание проекта")
     image = models.ManyToManyField("Image", null=True, blank=True, verbose_name="Дополнительные изображения")
-    creators = models.ManyToManyField("Account", verbose_name="Создатели проектов")
+    creators = models.ManyToManyField("Account", verbose_name="Создатели проекта", related_name="projects")
     comments = models.ManyToManyField(Comment, blank=True)
     PDFdescription = models.FileField(upload_to ='pdf/', validators =[FileExtensionValidator(allowed_extensions=['pdf'])], null=True, blank=True) 
     contact = models.CharField(max_length=200, verbose_name="Контакты", null=True)
@@ -47,6 +47,14 @@ class Timetable(models.Model):
     time = models.TimeField(auto_now=False, auto_now_add=False,default=None)
     def __str__(self) -> str:
         return self.classroom + ' ' + str(self.time)
+class Buy(models.Model):
+    key = models.CharField(max_length=11)
+    name = models.CharField(max_length=80)
+    size = models.CharField(max_length=11, default="M")
+    type = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f"{self.name} - {str(self.type)} - {str(self.key)}"
 
 
 
@@ -79,9 +87,9 @@ class Account(models.Model):
     score = models.IntegerField(default=0)
     contact = models.CharField(max_length=80, null=True)
     size = models.CharField(max_length=10)
-    projects = models.ManyToManyField(Project, null=True, blank=True)
     city = models.CharField(max_length=255, default="none")
     favorite = models.ManyToManyField(Competitions, null=True, blank=True)
+    buys = models.ManyToManyField(Buy, null=True)
 
     def __str__(self) -> str:
         return self.name
@@ -106,14 +114,6 @@ class Teacher(models.Model):
     class Meta:
         unique_together = ('email', 'login', 'password', 'age', 'name')
 
-class Buy(models.Model):
-    key = models.CharField(max_length=11)
-    name = models.CharField(max_length=80)
-    size = models.CharField(max_length=11, default="M")
-    type = models.CharField(max_length=30)
-
-    def __str__(self):
-        return f"{self.name} - {str(self.type)} - {str(self.key)}"
 
 
 class Image(models.Model):

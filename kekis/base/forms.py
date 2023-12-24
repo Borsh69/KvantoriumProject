@@ -17,4 +17,4 @@ class AddAccount(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['name', 'description', 'photo', 'age', 'email',
-             'login', 'password', 'size', 'city', 'projects']
+             'login', 'password', 'size', 'city']

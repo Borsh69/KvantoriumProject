@@ -159,7 +159,7 @@ def account(request, pk):
         account_ws = Account.objects.all()
         group = Group.objects.all()
         group = account.group_set.all()
-        buys = Buy.objects.get(name=account.name)
+        buys = account.buys
         score = 0
         id_num = []
         rank_num = []
