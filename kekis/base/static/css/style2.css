@@ -608,7 +608,7 @@
 }
 @media (max-width: 1440px){
 	.container{
-		margin: 10px 200px 0;
+		margin: 0px 200px 0;
 	}
 
 	.row__block main{
@@ -621,7 +621,7 @@
 }
 @media (max-width: 1024px){
 	.container{
-		margin: 10px 65px 0;
+		margin: 0px 65px 0;
 	}
 	.heading{
 	font-size: 2.5em;
@@ -647,7 +647,7 @@
 		margin: 5px;
 	}
 	.container{
-		margin: 10px 40px 0 40px;
+		margin: 0px 40px 0 40px;
 	}
 	.filter{
 		display: block;
@@ -722,7 +722,7 @@
 }
 @media (max-width: 425px){
 	.container{
-		margin: 5px 20px 0;
+		margin: 0px 20px 0;
 	}
 	.shop__block {
 		margin: 0 5px 10px;
@@ -903,6 +903,7 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	margin-top: 30px;
 }
 
 .project-title-image {
