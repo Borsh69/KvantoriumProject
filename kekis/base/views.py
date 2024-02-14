@@ -375,21 +375,8 @@ def addproject(request):
             tt = True
         else:
             return redirect('/')
-    if request.method == 'POST':
-        form = AddProject(request.POST, request.FILES)
-        if form.is_valid():
-            cd = form.cleaned_data
-            try:
-                form.save()
-                return redirect('/projects/')
-            except :
-                form.add_error(None, "error add post")
-
-        else:
-            print("Error")
-    else:
-        form = AddProject()
-    return render(request, 'base/newproject.html', {'form': form,'account': teacher, 'type': tt})
+    
+    return render(request, 'base/newproject.html', {'account': teacher, 'type': tt})
 
 
 def addaccount(request):

@@ -77,6 +77,7 @@ class Competitions(models.Model):
 class Account(models.Model):
     name = models.CharField(max_length=80)
     description = models.CharField(max_length=200)
+    tag = models.CharField(max_length=20, verbose_name="Tag", unique=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
     age = models.IntegerField()
     email = models.EmailField(max_length=200)

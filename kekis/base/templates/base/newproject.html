@@ -7,27 +7,27 @@
         <div class="registration-cssave" >
             <form action="{% url 'add' %}" class="registration-cssave__form" method = "post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class = "form-group"><p>
-                <label class = "form-label" for="{{ form.name.id_for_label}}">{{form.name.label}}:  </label>
-                    {{form.name}}</p>
+                <div class="form-group">
+                    <label for="Name" class="label-project_add">Название проекта:</label>
+                    <input type="text" class="input-project_add" id="name" name="name" size="10"/>
                 </div>
-                <div class = "form-error">{{form.login.errors}}</div>
-                <div class = "form-group"><p><label class = "form-label" for="{{ form.kvantum.id_for_label}}">{{form.kvantum.label}}:  </label>{{form.kvantum}}</p></div>
-                <div class = "form-error">{{form.kvantum.errors}}</div>
-                <div class = "form-group"><p>
-                    <label class = "form-label" for="{{ form.face.id_for_label}}">{{form.face.label}}:  </label>
-                        {{form.face}}</p>
+                <div class="form-group">
+                    <label for="image" class="label-project_add">Лицевое изображение:</label>
+                    <input type="file" class="input-project_add"/>
                 </div>
-                <div class = "form-error">{{form.face.errors}}</div>
-                <div class = "form-group"><p><label class = "form-label" for="{{ form.description.id_for_label}}">{{form.description.label}}:  </label>{{form.description}}</p></div>
-                <div class = "form-error">{{form.description.errors}}</div>
-                <div class = "form-group"><p><label class = "form-label" for="{{ form.creators.id_for_label}}">{{form.creators.label}}:  </label>{{form.creators}}</p></div>
-                <div class = "form-error">{{form.creators.errors}}</div>
-                <div class = "form-group"><p><label class = "form-label" for="{{ form.PDFdescription.id_for_label}}">{{form.PDFdescription.label}}:  </label>{{form.PDFdescription}}</p></div>
-                <div class = "form-error">{{form.PDFdescription.errors}}</div>
-                <div class = "form-group"><p><label class = "form-label" for="{{ form.contact.id_for_label}}">{{form.contact.label}}:  </label>{{form.contact}}</p></div>
-                <div class = "form-error">{{form.contact.errors}}</div>
-                <div class = "field_button">
+                <div class="form-group">
+                    <label for="Description" class="label-project_add">Описание:</label>
+                    <textarea class="textarea-project_add" name="comment" cols="40" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Creators" class="label-project_add">Теги создателей (example1,example2):</label>
+                    <input type="text" class="input-project_add" id="creators" name="creators" />
+                </div>
+                <div class="form-group">
+                    <label for="additional" class="label-project_add">PDF:</label>
+                    <input type="file" class="input-project_add"/>
+                </div>
+
                     <button class="login_button">Добавить проект</button>
                 </div>
             </form>
