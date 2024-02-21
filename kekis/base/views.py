@@ -375,6 +375,21 @@ def addproject(request):
             tt = True
         else:
             return redirect('/')
+    if request.method == 'POST':
+        print(request.POST,"\n", request.FILES)
+        np_name = request.POST["name"]
+        np_description = request.POST["description"]
+        np_creators = request.POST["creators"]
+        face = request.FILES["face"]
+        pdf = request.FILES["pdf"]
+        new_project = Project(name=np_name, description=np_description, face=face, PDFdescription=pdf)
+        new_project.save()
+        for creator in np_creators.replace(' ','').split(","):
+            print(creator)
+            new_project.creators.add(Account.objects.get(tag=creator))
+        new_project.save()
+        print("holy//@")
+        #return redirect("projects/")
     
     return render(request, 'base/newproject.html', {'account': teacher, 'type': tt})
 
